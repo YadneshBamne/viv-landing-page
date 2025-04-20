@@ -140,9 +140,9 @@ const App = () => {
             delay={250}
             animateBy="letters"
             direction="bottom"
-            className={`transition-all duration-1000 select-none font-bold yatra-one-bold leading-none break-words mb-14 
+            className={`transition-all duration-1000 select-none font-bold leading-none break-words mb-20 
             ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-50"} 
-            text-[200px] sm:text-[180px] md:text-[250px] lg:text-[400px]`}
+            text-[200px] sm:text-[180px] md:text-[250px] lg:text-[250px] ml-2`}
           />
           <p className="text-sm sm:text-base pb-5 text-gray-400 select-none">
             Secure, reliable and cost effective
@@ -162,8 +162,8 @@ const App = () => {
         {/* Products */}
         <section className="w-full min-h-screen  flex items-center justify-center px-4">
           <div className="max-w-6xl w-full text-center">
-            <h1 className="text-white text-4xl sm:text-5xl font-bold font-mono mb-15">
-              [Our Products]
+            <h1 className="text-white text-5xl sm:text-8xl font-bold font-mono mb-15">
+              PRODUCTS
             </h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
               {[
@@ -202,8 +202,8 @@ const App = () => {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <PixelCard variant="red" className="backdrop-blur-3xl">
                       <ShineBorder
-                        shineColor={["#D7F9F1", "#40434E"]}
-                        className="rounded-4xl"
+                        shineColor={["#D7F9F1", "#40434E", "#FFF7F8"]}
+                        className="rounded-3xl"
                       />
                       <div className="absolute p-6 text-left hover:scale-[1.02] transition-transform shadow-md">
                         <h3 className="text-white text-4xl font-extrabold mb-6 text-shadow-lg/30">
@@ -241,8 +241,8 @@ const App = () => {
             />
           </div>
           <div className="relative z-10 max-w-6xl w-full text-center">
-            <h1 className="text-white text-4xl sm:text-5xl font-bold font-mono mb-15">
-              [Pricing Plans]
+            <h1 className="text-white text-4xl sm:text-8xl font-bold font-mono mb-15">
+              PRICING PLANS
             </h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
               {[

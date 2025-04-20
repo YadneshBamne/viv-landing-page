@@ -121,7 +121,7 @@ const App = () => {
           onClick={toggleMenu}
         ></div>
         <div
-          className={`fixed right-0 top-0 z-40 bg-[#040403] w-full h-full transform transition-transform duration-300 ${
+          className={`fixed right-0 top-0 z-40 bg-[#040403] w-[250px] h-full transform transition-transform duration-300 ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >

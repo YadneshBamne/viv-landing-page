@@ -140,7 +140,7 @@ const App = () => {
             delay={250}
             animateBy="letters"
             direction="bottom"
-            className={`transition-all duration-1000 select-none font-bold yatra-one-bold leading-none break-words 
+            className={`transition-all duration-1000 select-none font-bold yatra-one-bold leading-none break-words mb-14 
             ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-50"} 
             text-[200px] sm:text-[180px] md:text-[250px] lg:text-[400px]`}
           />

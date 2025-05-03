@@ -64,7 +64,7 @@ const Career = () => {
         <div className="flex items-center space-x-4 font-bold">
           <img src="./savege.png" width={70} alt="Logo" />
           <div className="hidden md:flex space-x-4">
-            {["API", "DOCS", "NEWS", "PLAYGROUND"].map((item, i) => (
+            {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
               <Link
                 key={i}
                 to={`/${item.toLowerCase()}`}
@@ -173,7 +173,7 @@ const News = () => {
         <div className="flex items-center space-x-4 font-bold">
           <img src="./savege.png" width={70} alt="Logo" />
           <div className="hidden md:flex space-x-4">
-            {["API", "DOCS", "NEWS", "PLAYGROUND"].map((item, i) => (
+            {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
               <Link
                 key={i}
                 to={`/${item.toLowerCase()}`}
@@ -363,7 +363,7 @@ const App = () => {
                     }`}
                   >
                     <div className="flex flex-col items-start p-6 space-y-4">
-                      {["API", "DOCS", "NEWS", "PLAYGROUND"].map((item, i) => (
+                      {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
                         <Link
                           key={i}
                           to={`/${item.toLowerCase()}`}
@@ -603,7 +603,7 @@ const App = () => {
                 <div className="flex items-center space-x-4 font-bold">
                   <img src="./savege.png" width={70} alt="Logo" />
                   <div className="hidden md:flex space-x-4">
-                    {["API", "DOCS", "NEWS", "PLAYGROUND"].map((item, i) => (
+                    {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
                       <Link
                         key={i}
                         to={`/${item.toLowerCase()}`}
@@ -659,7 +659,7 @@ const App = () => {
                 }`}
               >
                 <div className="flex flex-col items-start p-6 space-y-4">
-                  {["API", "DOCS", "NEWS", "PLAYGROUND"].map((item, i) => (
+                  {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
                     <Link
                       key={i}
                       to={`/${item.toLowerCase()}`}

@@ -70,7 +70,7 @@ const Career = () => {
             <img className="mr-8" src="./viv.png" width={80} alt="Logo" />
           </Link>
           <div className="hidden md:flex space-x-10 tracking-wide">
-            {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+            {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
               <Link
                 key={i}
                 to={`/${item.toLowerCase()}`}
@@ -79,6 +79,12 @@ const Career = () => {
                 {item}
               </Link>
             ))}
+            <a
+              href="https://viv-test.vercel.app/"
+              className="text-white hover:text-gray-300 text-sm sm:text-xl"
+            >
+              DOCS
+            </a>
           </div>
         </div>
 
@@ -87,10 +93,7 @@ const Career = () => {
         </button>
 
         {/* Mobile Toggle */}
-        <div
-          className="md:hidden flex items-center"
-          onClick={toggleMenu}
-        >
+        <div className="md:hidden flex items-center" onClick={toggleMenu}>
           {isMenuOpen ? (
             <svg
               width="24"
@@ -126,7 +129,7 @@ const Career = () => {
         }`}
       >
         <div className="flex flex-col items-start p-6 space-y-4">
-          {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+          {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
             <Link
               key={i}
               to={`/${item.toLowerCase()}`}
@@ -135,6 +138,12 @@ const Career = () => {
               {item}
             </Link>
           ))}
+          <a
+            href="https://viv-test.vercel.app/"
+            className="text-white text-lg hover:text-gray-300"
+          >
+            DOCS
+          </a>
           <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
             Try ViV AI
           </button>
@@ -160,12 +169,9 @@ const Career = () => {
           <h2 className="text-white text-3xl sm:text-4xl font-bold font-mono mb-8">
             Why Work at ViV AI?
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols- -gap-6">
             {benefits.map((benefit, idx) => (
-              <div
-                key={idx}
-                className="p-6 bg-neutral-900 rounded-lg text-left"
-              >
+              <div key={idx} className="p-6 bg-neutral-900 rounded-lg text-left">
                 <h3 className="text-white text-xl font-bold mb-2">
                   {benefit.title}
                 </h3>
@@ -240,7 +246,7 @@ const News = () => {
             <img className="mr-8" src="./viv.png" width={80} alt="Logo" />
           </Link>
           <div className="hidden md:flex space-x-10 tracking-wide">
-            {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+            {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
               <Link
                 key={i}
                 to={`/${item.toLowerCase()}`}
@@ -249,6 +255,12 @@ const News = () => {
                 {item}
               </Link>
             ))}
+            <a
+              href="https://viv-test.vercel.app/"
+              className="text-white hover:text-gray-300 text-sm sm:text-xl"
+            >
+              DOCS
+            </a>
           </div>
         </div>
 
@@ -257,10 +269,7 @@ const News = () => {
         </button>
 
         {/* Mobile Toggle */}
-        <div
-          className="md:hidden flex items-center"
-          onClick={toggleMenu}
-        >
+        <div className="md:hidden flex items-center" onClick={toggleMenu}>
           {isMenuOpen ? (
             <svg
               width="24"
@@ -296,7 +305,7 @@ const News = () => {
         }`}
       >
         <div className="flex flex-col items-start p-6 space-y-4">
-          {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+          {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
             <Link
               key={i}
               to={`/${item.toLowerCase()}`}
@@ -305,6 +314,12 @@ const News = () => {
               {item}
             </Link>
           ))}
+          <a
+            href="https://viv-test.vercel.app/"
+            className="text-white text-lg hover:text-gray-300"
+          >
+            DOCS
+          </a>
           <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
             Try ViV AI
           </button>
@@ -429,7 +444,7 @@ const App = () => {
                         <img className="mr-8" src="./viv.png" width={95} alt="Logo" />
                       </Link>
                       <div className="hidden md:flex space-x-10 tracking-wide">
-                        {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+                        {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
                           <Link
                             key={i}
                             to={`/${item.toLowerCase()}`}
@@ -438,6 +453,12 @@ const App = () => {
                             {item}
                           </Link>
                         ))}
+                        <a
+                          href="https://viv-test.vercel.app/"
+                          className="text-white hover:text-gray-300 text-sm sm:text-xl"
+                        >
+                          DOCS
+                        </a>
                       </div>
                     </div>
 
@@ -463,7 +484,7 @@ const App = () => {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth="2"
-                            d="M6 18L18 6M6 6l12 12"
+                            DFSLIDF="M6 18L18 6M6 6l12 12"
                           />
                         </svg>
                       ) : (
@@ -485,7 +506,7 @@ const App = () => {
                     }`}
                   >
                     <div className="flex flex-col items-start p-6 space-y-4">
-                      {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+                      {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
                         <Link
                           key={i}
                           to={`/${item.toLowerCase()}`}
@@ -494,6 +515,12 @@ const App = () => {
                           {item}
                         </Link>
                       ))}
+                      <a
+                        href="https://viv-test.vercel.app/"
+                        className="text-white text-lg hover:text-gray-300"
+                      >
+                        DOCS
+                      </a>
                       <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
                         Try ViV AI
                       </button>
@@ -726,7 +753,7 @@ const App = () => {
                     <img className="mr-8" src="./viv.png" width={80} alt="Logo" />
                   </Link>
                   <div className="hidden md:flex space-x-10 tracking-wide">
-                    {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+                    {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
                       <Link
                         key={i}
                         to={`/${item.toLowerCase()}`}
@@ -735,6 +762,12 @@ const App = () => {
                         {item}
                       </Link>
                     ))}
+                    <a
+                      href="https://viv-test.vercel.app/"
+                      className="text-white hover:text-gray-300 text-sm sm:text-xl"
+                    >
+                      DOCS
+                    </a>
                   </div>
                 </div>
 
@@ -743,17 +776,14 @@ const App = () => {
                 </button>
 
                 {/* Mobile Toggle */}
-                <div
-                  className="md:hidden flex items-center"
-                  onClick={toggleMenu}
-                >
+                <div className="md:hidden flex items-center" onClick={toggleMenu}>
                   {isMenuOpen ? (
                     <svg
                       width="24"
                       height="24"
                       fill="none"
                       stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      viewBox="0 24"
                       className="text-white"
                     >
                       <path
@@ -782,7 +812,7 @@ const App = () => {
                 }`}
               >
                 <div className="flex flex-col items-start p-6 space-y-4">
-                  {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+                  {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
                     <Link
                       key={i}
                       to={`/${item.toLowerCase()}`}
@@ -791,6 +821,12 @@ const App = () => {
                       {item}
                     </Link>
                   ))}
+                  <a
+                    href="https://viv-test.vercel.app/"
+                    className="text-white text-lg hover:text-gray-300"
+                  >
+                    DOCS
+                  </a>
                   <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
                     Try ViV AI
                   </button>

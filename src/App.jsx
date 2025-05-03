@@ -469,7 +469,6 @@ const App = () => {
                               <h3 className="text-white text-4xl font-extrabold mb-6">
                                 {product.title}
                               </h3>
-                              incidental whitespace between attributes removed
                               <p className="text-white mb-4 text-2xl font-bold tracking-wide">
                                 {product.price}
                               </p>

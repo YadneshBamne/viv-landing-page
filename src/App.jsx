@@ -10,6 +10,10 @@ import bgVideo from "/bgvideo.mp4";
 
 // Career Component
 const Career = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   const footerSections = [
     {
       title: "TRY VIV ON",
@@ -63,26 +67,79 @@ const Career = () => {
       <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
         <div className="flex items-center space-x-4 font-bold">
           <Link to="/">
-            <Link to="/">
-              <img src="./savege.png" width={70} alt="Logo" />
-            </Link>
+            <img className="mr-8" src="./viv.png" width={80} alt="Logo" />
           </Link>
-          <div className="hidden md:flex space-x-4">
-            {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+          <div className="hidden md:flex space-x-10 tracking-wide">
+            {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
               <Link
                 key={i}
                 to={`/${item.toLowerCase()}`}
-                className="text-white hover:text-gray-300 text-sm sm:text-base"
+                className="text-white hover:text-gray-300 text-sm sm:text-xl"
               >
                 {item}
               </Link>
             ))}
           </div>
         </div>
+
         <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
           Try ViV AI
         </button>
+
+        {/* Mobile Toggle */}
+        <div
+          className="md:hidden flex items-center"
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? (
+            <svg
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              className="text-white"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          ) : (
+            <MenuIcon size={29} className="text-white" />
+          )}
+        </div>
       </nav>
+
+      {/* Mobile Sidebar */}
+      <div
+        className={`fixed inset-0 bg-black bg-opacity-70 z-30 md:hidden transition-all ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        onClick={toggleMenu}
+      ></div>
+      <div
+        className={`fixed right-0 top-0 z-40 bg-[#040403] w-[250px] h-full transform transition-transform duration-300 ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex flex-col items-start p-6 space-y-4">
+          {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+            <Link
+              key={i}
+              to={`/${item.toLowerCase()}`}
+              className="text-white text-lg hover:text-gray-300"
+            >
+              {item}
+            </Link>
+          ))}
+          <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
+            Try ViV AI
+          </button>
+        </div>
+      </div>
 
       {/* Main Content */}
       <section className="w-full min-h-[calc(100vh-80px)] flex flex-col justify-center items-center text-center px-4 py-12">
@@ -151,6 +208,10 @@ const Career = () => {
 
 // News Component
 const News = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   const footerSections = [
     {
       title: "TRY VIV ON",
@@ -176,24 +237,79 @@ const News = () => {
       <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
         <div className="flex items-center space-x-4 font-bold">
           <Link to="/">
-            <img src="./savege.png" width={70} alt="Logo" />
+            <img className="mr-8" src="./viv.png" width={80} alt="Logo" />
           </Link>
-          <div className="hidden md:flex space-x-4">
-            {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+          <div className="hidden md:flex space-x-10 tracking-wide">
+            {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
               <Link
                 key={i}
                 to={`/${item.toLowerCase()}`}
-                className="text-white hover:text-gray-300 text-sm sm:text-base"
+                className="text-white hover:text-gray-300 text-sm sm:text-xl"
               >
                 {item}
               </Link>
             ))}
           </div>
         </div>
+
         <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
           Try ViV AI
         </button>
+
+        {/* Mobile Toggle */}
+        <div
+          className="md:hidden flex items-center"
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? (
+            <svg
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              className="text-white"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          ) : (
+            <MenuIcon size={29} className="text-white" />
+          )}
+        </div>
       </nav>
+
+      {/* Mobile Sidebar */}
+      <div
+        className={`fixed inset-0 bg-black bg-opacity-70 z-30 md:hidden transition-all ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        onClick={toggleMenu}
+      ></div>
+      <div
+        className={`fixed right-0 top-0 z-40 bg-[#040403] w-[250px] h-full transform transition-transform duration-300 ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex flex-col items-start p-6 space-y-4">
+          {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+            <Link
+              key={i}
+              to={`/${item.toLowerCase()}`}
+              className="text-white text-lg hover:text-gray-300"
+            >
+              {item}
+            </Link>
+          ))}
+          <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
+            Try ViV AI
+          </button>
+        </div>
+      </div>
 
       {/* Main Content */}
       <section className="w-full min-h-[calc(100vh-80px)] flex flex-col justify-center items-center text-center px-4">
@@ -310,14 +426,14 @@ const App = () => {
                   <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
                     <div className="flex items-center space-x-4 font-bold">
                       <Link to="/">
-                        <img src="./savege.png" width={70} alt="Logo" />
+                        <img className="mr-8" src="./viv.png" width={95} alt="Logo" />
                       </Link>
-                      <div className="hidden md:flex space-x-4">
-                        {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+                      <div className="hidden md:flex space-x-10 tracking-wide">
+                        {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
                           <Link
                             key={i}
                             to={`/${item.toLowerCase()}`}
-                            className="text-white hover:text-gray-300 text-sm sm:text-base"
+                            className="text-white hover:text-gray-300 text-sm sm:text-xl"
                           >
                             {item}
                           </Link>
@@ -369,7 +485,7 @@ const App = () => {
                     }`}
                   >
                     <div className="flex flex-col items-start p-6 space-y-4">
-                      {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+                      {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
                         <Link
                           key={i}
                           to={`/${item.toLowerCase()}`}
@@ -607,14 +723,14 @@ const App = () => {
               <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between bg-black">
                 <div className="flex items-center space-x-4 font-bold">
                   <Link to="/">
-                    <img src="./savege.png" width={70} alt="Logo" />
+                    <img className="mr-8" src="./viv.png" width={80} alt="Logo" />
                   </Link>
-                  <div className="hidden md:flex space-x-4">
-                    {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+                  <div className="hidden md:flex space-x-10 tracking-wide">
+                    {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
                       <Link
                         key={i}
                         to={`/${item.toLowerCase()}`}
-                        className="text-white hover:text-gray-300 text-sm sm:text-base"
+                        className="text-white hover:text-gray-300 text-sm sm:text-xl"
                       >
                         {item}
                       </Link>
@@ -666,7 +782,7 @@ const App = () => {
                 }`}
               >
                 <div className="flex flex-col items-start p-6 space-y-4">
-                  {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+                  {["VIV", "API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
                     <Link
                       key={i}
                       to={`/${item.toLowerCase()}`}

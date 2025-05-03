@@ -62,7 +62,11 @@ const Career = () => {
       {/* Header */}
       <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
         <div className="flex items-center space-x-4 font-bold">
-          <img src="./savege.png" width={70} alt="Logo" />
+          <Link to="/">
+            <Link to="/">
+              <img src="./savege.png" width={70} alt="Logo" />
+            </Link>
+          </Link>
           <div className="hidden md:flex space-x-4">
             {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
               <Link
@@ -171,7 +175,9 @@ const News = () => {
       {/* Header */}
       <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
         <div className="flex items-center space-x-4 font-bold">
-          <img src="./savege.png" width={70} alt="Logo" />
+          <Link to="/">
+            <img src="./savege.png" width={70} alt="Logo" />
+          </Link>
           <div className="hidden md:flex space-x-4">
             {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
               <Link
@@ -303,19 +309,19 @@ const App = () => {
                   {/* Navbar */}
                   <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
                     <div className="flex items-center space-x-4 font-bold">
-                      <img src="./savege.png" width={70} alt="Logo" />
+                      <Link to="/">
+                        <img src="./savege.png" width={70} alt="Logo" />
+                      </Link>
                       <div className="hidden md:flex space-x-4">
-                        {["API", "DOCS", "NEWS", "CAREER"].map(
-                          (item, i) => (
-                            <Link
-                              key={i}
-                              to={`/${item.toLowerCase()}`}
-                              className="text-white hover:text-gray-300 text-sm sm:text-base"
-                            >
-                              {item}
-                            </Link>
-                          )
-                        )}
+                        {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
+                          <Link
+                            key={i}
+                            to={`/${item.toLowerCase()}`}
+                            className="text-white hover:text-gray-300 text-sm sm:text-base"
+                          >
+                            {item}
+                          </Link>
+                        ))}
                       </div>
                     </div>
 
@@ -601,7 +607,9 @@ const App = () => {
             <>
               <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between bg-black">
                 <div className="flex items-center space-x-4 font-bold">
-                  <img src="./savege.png" width={70} alt="Logo" />
+                  <Link to="/">
+                    <img src="./savege.png" width={70} alt="Logo" />
+                  </Link>
                   <div className="hidden md:flex space-x-4">
                     {["API", "DOCS", "NEWS", "CAREER"].map((item, i) => (
                       <Link

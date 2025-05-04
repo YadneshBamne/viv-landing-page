@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { ArrowRight, MenuIcon, MoveRight } from "lucide-react";
+import Lottie from "lottie-react";
+import Spline from "@splinetool/react-spline";
 import Particles from "./bits/Particles";
 import PixelCard from "./bits/PixelCard";
-import BlurText from "./bits/BlurTxt";
 import { ShineBorder } from "./components/magicui/shine-border";
 import "./App.css";
-import bgVideo from "/bgvideo.mp4";
+import notFoundAnimation from "./assets/notfound.json"; // Replace with your actual Lottie file path
 
 // Career Component
 const Career = () => {
@@ -64,7 +65,7 @@ const Career = () => {
   return (
     <div className="relative w-full overflow-x-hidden text-white bg-[#040403]">
       {/* Header */}
-      <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
+      <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between z-40">
         <div className="flex items-center space-x-4 font-bold">
           <Link to="/">
             <img className="mr-8" src="./viv.png" width={80} alt="Logo" />
@@ -118,7 +119,7 @@ const Career = () => {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed inset-0 bg-black bg-opacity-70 z-30 md:hidden transition-all ${
+        className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         onClick={toggleMenu}
@@ -169,7 +170,7 @@ const Career = () => {
           <h2 className="text-white text-3xl sm:text-4xl font-bold font-mono mb-8">
             Why Work at ViV AI?
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols- -gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {benefits.map((benefit, idx) => (
               <div key={idx} className="p-6 bg-neutral-900 rounded-lg text-left">
                 <h3 className="text-white text-xl font-bold mb-2">
@@ -240,7 +241,7 @@ const News = () => {
   return (
     <div className="relative w-full overflow-x-hidden text-white bg-[#040403]">
       {/* Header */}
-      <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
+      <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between z-40">
         <div className="flex items-center space-x-4 font-bold">
           <Link to="/">
             <img className="mr-8" src="./viv.png" width={80} alt="Logo" />
@@ -294,7 +295,7 @@ const News = () => {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed inset-0 bg-black bg-opacity-70 z-30 md:hidden transition-all ${
+        className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         onClick={toggleMenu}
@@ -416,28 +417,17 @@ const App = () => {
         <Route
           path="/"
           element={
-            <div className="relative w-full overflow-x-hidden text-white">
-              {/* VIDEO BACKGROUND SECTION */}
-              <div className="relative w-full min-h-screen">
-                {/* Background Video */}
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover z-0"
-                >
-                  <source src={bgVideo} type="video/mp4" />
-                  Your browser does not support the video tag or the video
-                  failed to load.
-                </video>
+            <div className="relative w-full overflow-x-hidden text-white bg-[#040403]">
+              {/* SPLINE BACKGROUND SECTION */}
+              <div className="relative w-full h-screen">
+                {/* Spline Background */}
+                <Spline
+                  scene="https://prod.spline.design/zdaYONGdw2PKM7H6/scene.splinecode"
+                  className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+                />
 
-                {/* Dark overlay for readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#040403] bg-opacity-50 z-10" />
-
-                {/* Content over video */}
-                <div className="relative z-20">
-                  {/* Navbar */}
+                {/* Navbar */}
+                <div className="relative z-40">
                   <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
                     <div className="flex items-center space-x-4 font-bold">
                       <Link to="/">
@@ -484,7 +474,7 @@ const App = () => {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth="2"
-                            DFSLIDF="M6 18L18 6M6 6l12 12"
+                            d="M6 18L18 6M6 6l12 12"
                           />
                         </svg>
                       ) : (
@@ -495,7 +485,7 @@ const App = () => {
 
                   {/* Mobile Sidebar */}
                   <div
-                    className={`fixed inset-0 bg-black bg-opacity-70 z-30 md:hidden transition-all ${
+                    className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${
                       isMenuOpen ? "translate-x-0" : "translate-x-full"
                     }`}
                     onClick={toggleMenu}
@@ -526,43 +516,11 @@ const App = () => {
                       </button>
                     </div>
                   </div>
-
-                  {/* Hero */}
-                  <section className="w-full min-h-[calc(100vh-80px)] flex flex-col justify-center items-center text-center px-4">
-                    <BlurText
-                      text="ViV"
-                      delay={250}
-                      animateBy="letters"
-                      direction="bottom"
-                      className={`transition-all duration-1000 select-none font-bold leading-none break-words mb-20 
-                      ${
-                        isLoaded
-                          ? "opacity-100 scale-100"
-                          : "opacity-0 scale-50"
-                      } 
-                      text-[200px] sm:text-[180px] md:text-[250px] lg:text-[250px] ml-2`}
-                    />
-                    <p className="text-sm sm:text-base pb-5 text-gray-400 select-none">
-                      Secure, reliable and cost effective
-                    </p>
-                    <div className="relative w-full max-w-[580px] px-2">
-                      <input
-                        type="text"
-                        placeholder="Search Anything"
-                        className="w-full px-6 py-3 pr-14 rounded-full text-white text-base sm:text-lg bg-neutral-950 border focus:outline-none focus:ring-2"
-                      />
-                      <Link to="http://localhost:5173/chat">
-                        <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-black p-2 mr-1 rounded-full hover:bg-amber-50 transition">
-                          <ArrowRight className="w-5 h-5 cursor-pointer" />
-                        </button>
-                      </Link>
-                    </div>
-                  </section>
                 </div>
               </div>
 
               {/* PRODUCTS Section */}
-              <section className="w-full min-h-screen flex items-center justify-center px-4 bg-[#040403]">
+              <section className="w-full min-h-screen flex items-center justify-center px-4 bg-[#010101]">
                 <div className="max-w-6xl w-full text-center">
                   <h1 className="text-white text-5xl sm:text-8xl font-bold font-mono mb-15">
                     PRODUCTS
@@ -748,8 +706,9 @@ const App = () => {
         <Route
           path="*"
           element={
-            <>
-              <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between bg-black">
+            <div className="relative w-full overflow-x-hidden text-white bg-[#040403]">
+              {/* Navbar */}
+              <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between z-40">
                 <div className="flex items-center space-x-4 font-bold">
                   <Link to="/">
                     <img className="mr-8" src="./viv.png" width={80} alt="Logo" />
@@ -785,7 +744,7 @@ const App = () => {
                       height="24"
                       fill="none"
                       stroke="currentColor"
-                      viewBox="0 24"
+                      viewBox="0 0 24 24"
                       className="text-white"
                     >
                       <path
@@ -803,7 +762,7 @@ const App = () => {
 
               {/* Mobile Sidebar */}
               <div
-                className={`fixed inset-0 bg-black bg-opacity-70 z-30 md:hidden transition-all ${
+                className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${
                   isMenuOpen ? "translate-x-0" : "translate-x-full"
                 }`}
                 onClick={toggleMenu}
@@ -834,26 +793,34 @@ const App = () => {
                   </button>
                 </div>
               </div>
-              <main className="grid min-h-screen place-items-center bg-black px-6 py-24 sm:py-32 lg:px-8">
+
+              {/* 404 Page with Lottie Animation */}
+              <main className="flex min-h-[calc(100vh-80px)] items-center justify-center px-6 py-24 sm:py-32 bg-[#040403]">
                 <div className="text-center">
-                  <p className="text-9xl font-semibold text-white">404</p>
-                  <h1 className="mt-4 text-5xl font-semibold tracking-tight text-balance text-white sm:text-7xl">
-                    Page not found
+                  <div className="flex justify-center">
+                    <Lottie
+                      animationData={notFoundAnimation}
+                      loop={true}
+                      className="w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] pb-20"
+                    />
+                  </div>
+                  <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+                    Page Not Found
                   </h1>
-                  <p className="mt-6 text-lg font-medium text-pretty text-white sm:text-xl/8">
+                  <p className="mt-6 text-lg text-gray-400">
                     Sorry, we couldn’t find the page you’re looking for.
                   </p>
-                  <div className="mt-10 flex items-center justify-center gap-x-6">
-                    <a
-                      href="/"
-                      className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  <div className="mt-10 flex items-center justify-center">
+                    <Link
+                      to="/"
+                      className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                       Go back home
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </main>
-            </>
+            </div>
           }
         />
       </Routes>

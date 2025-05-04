@@ -422,7 +422,7 @@ const App = () => {
               <div className="relative w-full h-screen">
                 {/* Spline Background */}
                 <Spline
-                  scene="https://prod.spline.design/zdaYONGdw2PKM7H6/scene.splinecode"
+                  scene="https://prod.spline.design/fULfchyLx26V7Yyb/scene.splinecode"
                   className="absolute inset-0 w-full h-full z-0 pointer-events-none"
                 />
 

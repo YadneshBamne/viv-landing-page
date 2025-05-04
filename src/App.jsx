@@ -419,7 +419,7 @@ const App = () => {
           element={
             <div className="relative w-full overflow-x-hidden text-white bg-[#040403]">
               {/* SPLINE BACKGROUND SECTION */}
-              <div className="relative w-full h-screen bg-gradient-to-t from-[#ffffff] to-[#040403] to-55%">
+              <div className="relative w-full h-screen">
                 {/* Spline Background */}
                 <Spline
                   scene="https://prod.spline.design/zdaYONGdw2PKM7H6/scene.splinecode"

@@ -89,9 +89,11 @@ const Career = () => {
           </div>
         </div>
 
-        <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
-          Try ViV AI
-        </button>
+        <Link to="https://chat.cosinv.com/">
+          <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
+            Try ViV AI
+          </button>
+        </Link>
 
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center" onClick={toggleMenu}>
@@ -145,9 +147,11 @@ const Career = () => {
           >
             DOCS
           </a>
-          <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
-            Try ViV AI
-          </button>
+          <Link to="https://chat.cosinv.com/">
+            <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
+              Try ViV AI
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -172,7 +176,10 @@ const Career = () => {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {benefits.map((benefit, idx) => (
-              <div key={idx} className="p-6 bg-neutral-900 rounded-lg text-left">
+              <div
+                key={idx}
+                className="p-6 bg-neutral-900 rounded-lg text-left"
+              >
                 <h3 className="text-white text-xl font-bold mb-2">
                   {benefit.title}
                 </h3>
@@ -184,7 +191,7 @@ const Career = () => {
       </section>
 
       {/* Footer */}
-      <div className="w-full min-h-screen bg-gradient-to-t from-[#1E2019] to-[#040403] to-55% flex items-center justify-center pb-24 mt-10">
+      <div className="w-full min-h-screen bg-gradient-to-t from-[#1E2019] to-[#010101] to-55% flex items-center justify-center pb-24 mt-10">
         <div className="w-full max-w-6xl px-6 sm:px-10 text-[1.3rem]">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 justify-items-start md:justify-items-start text-start md:text-left">
             {footerSections.map((section, index) => (
@@ -265,9 +272,11 @@ const News = () => {
           </div>
         </div>
 
-        <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
-          Try ViV AI
-        </button>
+        <Link to="https://chat.cosinv.com/">
+          <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
+            Try ViV AI
+          </button>
+        </Link>
 
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center" onClick={toggleMenu}>
@@ -321,9 +330,11 @@ const News = () => {
           >
             DOCS
           </a>
-          <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
-            Try ViV AI
-          </button>
+          <Link to="https://chat.cosinv.com/">
+            <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
+              Try ViV AI
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -349,7 +360,7 @@ const News = () => {
       </section>
 
       {/* Footer */}
-      <div className="w-full min-h-screen bg-gradient-to-t from-[#1E2019] to-[#040403] to-55% flex items-center justify-center pb-24 mt-10">
+      <div className="w-full min-h-screen bg-gradient-to-t from-[#1E2019] to-[#010101] to-55% flex items-center justify-center pb-24 mt-10">
         <div className="w-full max-w-6xl px-6 sm:px-10 text-[1.3rem]">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 justify-items-start md:justify-items-start text-start md:text-left">
             {footerSections.map((section, index) => (
@@ -417,7 +428,7 @@ const App = () => {
         <Route
           path="/"
           element={
-            <div className="relative w-full overflow-x-hidden text-white bg-[#040403] z-50 bg-gradient-to-t from-[#010101] to-55%">
+            <div className="relative w-full overflow-x-hidden text-white bg-[#040403]">
               {/* SPLINE BACKGROUND SECTION */}
               <div className="relative w-full h-screen">
                 {/* Spline Background */}
@@ -426,12 +437,18 @@ const App = () => {
                   className="absolute inset-0 w-full h-full z-0 pointer-events-none"
                 />
 
-                {/* Navbar */}
-                <div className="relative z-40">
+                {/* Navbar and Input */}
+                <div className="relative z-40 flex flex-col h-full">
+                  {/* Navbar */}
                   <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
                     <div className="flex items-center space-x-4 font-bold">
                       <Link to="/">
-                        <img className="mr-8" src="./viv.png" width={95} alt="Logo" />
+                        <img
+                          className="mr-8"
+                          src="./viv.png"
+                          width={95}
+                          alt="Logo"
+                        />
                       </Link>
                       <div className="hidden md:flex space-x-10 tracking-wide">
                         {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
@@ -452,9 +469,11 @@ const App = () => {
                       </div>
                     </div>
 
-                    <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
-                      Try ViV AI
-                    </button>
+                    <Link to="https://chat.cosinv.com/">
+                      <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
+                        Try ViV AI
+                      </button>
+                    </Link>
 
                     {/* Mobile Toggle */}
                     <div
@@ -511,16 +530,34 @@ const App = () => {
                       >
                         DOCS
                       </a>
-                      <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
-                        Try ViV AI
-                      </button>
+                      <Link to="https://chat.cosinv.com/">
+                        <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
+                          Try ViV AI
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Input Field */}
+                  <div className="absolute bottom-30 p-4 w-full flex justify-center z-30">
+                    <div className="relative w-full max-w-[580px] px-2">
+                      <input
+                        type="text"
+                        placeholder="Search Anything"
+                        className="w-full px-6 py-3 pr-14 rounded-full text-white text-base sm:text-lg bg-neutral-950 "
+                      />
+                      <Link to="https://chat.cosinv.com/">
+                        <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-black p-2 mr-1 rounded-full hover:bg-amber-50 transition">
+                          <ArrowRight className="w-5 h-5 cursor-pointer" />
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* PRODUCTS Section */}
-              <section className="w-full min-h-screen flex items-center justify-center px-4 bg-[#010101] bg-gradient-to-b from-[#010101] to-55%">
+              <section className="w-full min-h-screen flex items-center justify-center px-4 bg-[#010101]">
                 <div className="max-w-6xl w-full text-center">
                   <h1 className="text-white text-5xl sm:text-8xl font-bold font-mono mb-15">
                     PRODUCTS
@@ -590,7 +627,7 @@ const App = () => {
               </section>
 
               {/* PRICING Section */}
-              <section className="relative w-full min-h-screen bg-[#040403] flex items-center justify-center px-4 overflow-hidden">
+              <section className="relative w-full min-h-screen bg-[#010101] flex items-center justify-center px-4 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                   <Particles
                     particleColors={["#ffffff", "#ffffff"]}
@@ -670,7 +707,7 @@ const App = () => {
 
               {/* FOOTER */}
               <div
-                className="w-full min-h-screen bg-gradient-to-t from-[#1E2019] to-[#040403] to-55% flex items-center justify-center"
+                className="w-full min-h-screen bg-gradient-to-t from-[#1E2019] to-[#010101] to-55% flex items-center justify-center"
                 id="footer"
               >
                 <div className="w-full max-w-6xl px-6 sm:px-10 text-[1.3rem]">
@@ -711,7 +748,12 @@ const App = () => {
               <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between z-40">
                 <div className="flex items-center space-x-4 font-bold">
                   <Link to="/">
-                    <img className="mr-8" src="./viv.png" width={80} alt="Logo" />
+                    <img
+                      className="mr-8"
+                      src="./viv.png"
+                      width={80}
+                      alt="Logo"
+                    />
                   </Link>
                   <div className="hidden md:flex space-x-10 tracking-wide">
                     {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
@@ -732,12 +774,17 @@ const App = () => {
                   </div>
                 </div>
 
-                <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
-                  Try ViV AI
-                </button>
+                <Link to="https://chat.cosinv.com/">
+                  <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
+                    Try ViV AI
+                  </button>
+                </Link>
 
                 {/* Mobile Toggle */}
-                <div className="md:hidden flex items-center" onClick={toggleMenu}>
+                <div
+                  className="md:hidden flex items-center"
+                  onClick={toggleMenu}
+                >
                   {isMenuOpen ? (
                     <svg
                       width="24"
@@ -788,9 +835,11 @@ const App = () => {
                   >
                     DOCS
                   </a>
-                  <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold">
-                    Try ViV AI
-                  </button>
+                  <Link to="https://chat.cosinv.com/">
+                    <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
+                      Try ViV AI
+                    </button>
+                  </Link>
                 </div>
               </div>
 

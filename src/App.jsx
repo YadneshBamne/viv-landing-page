@@ -417,12 +417,12 @@ const App = () => {
         <Route
           path="/"
           element={
-            <div className="relative w-full overflow-x-hidden text-white bg-[#040403]">
+            <div className="relative w-full overflow-x-hidden text-white bg-[#040403] z-50 bg-gradient-to-t from-[#010101] to-55%">
               {/* SPLINE BACKGROUND SECTION */}
               <div className="relative w-full h-screen">
                 {/* Spline Background */}
                 <Spline
-                  scene="https://prod.spline.design/fULfchyLx26V7Yyb/scene.splinecode"
+                  scene="https://prod.spline.design/lq9VhNcDjdCW-zwT/scene.splinecode"
                   className="absolute inset-0 w-full h-full z-0 pointer-events-none"
                 />
 

@@ -419,10 +419,10 @@ const App = () => {
           element={
             <div className="relative w-full overflow-x-hidden text-white bg-[#040403]">
               {/* SPLINE BACKGROUND SECTION */}
-              <div className="relative w-full h-screen">
+              <div className="relative w-full h-screen bg-gradient-to-t from-[#ffffff] to-[#040403] to-55%">
                 {/* Spline Background */}
                 <Spline
-                  scene="https://prod.spline.design/bDgIakI6KWT9xFM7/scene.splinecode"
+                  scene="https://prod.spline.design/zdaYONGdw2PKM7H6/scene.splinecode"
                   className="absolute inset-0 w-full h-full z-0 pointer-events-none"
                 />
 
@@ -520,7 +520,7 @@ const App = () => {
               </div>
 
               {/* PRODUCTS Section */}
-              <section className="w-full min-h-screen flex items-center justify-center px-4 bg-[#040403]">
+              <section className="w-full min-h-screen flex items-center justify-center px-4 bg-[#010101] bg-gradient-to-b from-[#010101] to-55%">
                 <div className="max-w-6xl w-full text-center">
                   <h1 className="text-white text-5xl sm:text-8xl font-bold font-mono mb-15">
                     PRODUCTS

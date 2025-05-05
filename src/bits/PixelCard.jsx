@@ -126,7 +126,28 @@ const VARIANTS = {
     speed: 80,
     colors: "#fecdd3,#fda4af,#e11d48",
     noFocus: true
-  }
+  },
+  purple: {
+    activeColor: "#e9d5ff",
+    gap: 5,
+    speed: 25,
+    colors: "#e9d5ff,#c084fc,#a855f7",
+    noFocus: false
+  },
+  green: {
+    activeColor: "#bbf7d0",
+    gap: 5,
+    speed: 25,
+    colors: "#bbf7d0,#34d399,#059669",
+    noFocus: false
+  },
+  red: {
+    activeColor: "#fecaca",
+    gap: 5,
+    speed: 30,
+    colors: "#fecaca,#f87171,#b91c1c",
+    noFocus: false
+  }  
 };
 
 export default function PixelCard({

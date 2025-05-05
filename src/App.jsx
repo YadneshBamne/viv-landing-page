@@ -121,15 +121,13 @@ const Career = () => {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
         onClick={toggleMenu}
       ></div>
       <div
-        className={`fixed right-0 top-0 z-40 bg-[#040403] w-[250px] h-full transform transition-transform duration-300 ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed right-0 top-0 z-40 bg-[#040403] w-[250px] h-full transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="flex flex-col items-start p-6 space-y-4">
           {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
@@ -304,15 +302,13 @@ const News = () => {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
         onClick={toggleMenu}
       ></div>
       <div
-        className={`fixed right-0 top-0 z-40 bg-[#040403] w-[250px] h-full transform transition-transform duration-300 ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed right-0 top-0 z-40 bg-[#040403] w-[250px] h-full transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="flex flex-col items-start p-6 space-y-4">
           {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
@@ -504,15 +500,13 @@ const App = () => {
 
                   {/* Mobile Sidebar */}
                   <div
-                    className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${
-                      isMenuOpen ? "translate-x-0" : "translate-x-full"
-                    }`}
+                    className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+                      }`}
                     onClick={toggleMenu}
                   ></div>
                   <div
-                    className={`fixed right-0 top-0 z-40 bg-[#040403] w-[250px] h-full transform transition-transform duration-300 ${
-                      isMenuOpen ? "translate-x-0" : "translate-x-full"
-                    }`}
+                    className={`fixed right-0 top-0 z-40 bg-[#040403] w-[250px] h-full transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+                      }`}
                   >
                     <div className="flex flex-col items-start p-6 space-y-4">
                       {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
@@ -572,6 +566,7 @@ const App = () => {
                           "Low latency video analytics",
                           "Cloud/Edge compatible",
                         ],
+                        variant: "blue", // Changed to blue
                       },
                       {
                         title: "DOCS",
@@ -581,6 +576,7 @@ const App = () => {
                           "Multi-language NLP",
                           "Seamless integrations",
                         ],
+                        variant: "green", // New green variant
                       },
                       {
                         title: "ViV AI",
@@ -590,6 +586,7 @@ const App = () => {
                           "Behavior analytics",
                           "Automated response",
                         ],
+                        variant: "red", // Kept as red
                       },
                     ].map((product, idx) => (
                       <div
@@ -598,7 +595,7 @@ const App = () => {
                       >
                         <div className="absolute inset-0 flex items-center justify-center">
                           <PixelCard
-                            variant="red"
+                            variant={product.variant}
                             className="backdrop-blur-3xl"
                           >
                             <ShineBorder
@@ -673,36 +670,38 @@ const App = () => {
                           "Onboarding + training",
                         ],
                       },
-                    ].map((plan, idx) => (
-                      <div key={idx} className="flex justify-center">
-                        <PixelCard
-                          variant="yellow"
-                          className="backdrop-blur-3xl"
-                        >
-                          <div className="absolute p-6 text-left hover:scale-[1.02] transition-transform shadow-md">
-                            <h3 className="text-white text-5xl font-extrabold mb-10">
-                              {plan.title}
-                            </h3>
-                            <p className="text-white mb-4 text-xl font-extrabold tracking-wide">
-                              {plan.price}
-                            </p>
-                            <ul className="text-md text-white space-y-2 mb-6 font-extrabold tracking-widest">
-                              {plan.features.map((feat, i) => (
-                                <li key={i}>• {feat}</li>
-                              ))}
-                            </ul>
-                            <button className="flex items-center justify-center gap-2 cursor-pointer w-full border border-white text-white rounded-full py-2 hover:bg-white hover:text-black transition-all font-semibold">
-                              {plan.title === "Enterprise"
-                                ? "Contact Us"
-                                : "Get Started"}
-                              <MoveRight className="ml-2" size={20} />
-                            </button>
-                          </div>
-                        </PixelCard>
-                      </div>
-                    ))}
+                    ].map((plan, idx) => {
+                      const variants = ["silver", "yellow", "purple"];
+                      return (
+                        <div key={idx} className="flex justify-center">
+                          <PixelCard
+                            variant={variants[idx]} // Assign variant based on index
+                            className="backdrop-blur-3xl"
+                          >
+                            <div className="absolute p-6 text-left hover:scale-[1.02] transition-transform shadow-md">
+                              <h3 className="text-white text-5xl font-extrabold mb-10">
+                                {plan.title}
+                              </h3>
+                              <p className="text-white mb-4 text-xl font-extrabold tracking-wide">
+                                {plan.price}
+                              </p>
+                              <ul className="text-md text-white space-y-2 mb-6 font-extrabold tracking-widest">
+                                {plan.features.map((feat, i) => (
+                                  <li key={i}>• {feat}</li>
+                                ))}
+                              </ul>
+                              <button className="flex items-center justify-center gap-2 cursor-pointer w-full border border-white text-white rounded-full py-2 hover:bg-white hover:text-black transition-all font-semibold">
+                                {plan.title === "Enterprise" ? "Contact Us" : "Get Started"}
+                                <MoveRight className="ml-2" size={20} />
+                              </button>
+                            </div>
+                          </PixelCard>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
+
               </section>
 
               {/* FOOTER */}
@@ -809,15 +808,13 @@ const App = () => {
 
               {/* Mobile Sidebar */}
               <div
-                className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${
-                  isMenuOpen ? "translate-x-0" : "translate-x-full"
-                }`}
+                className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+                  }`}
                 onClick={toggleMenu}
               ></div>
               <div
-                className={`fixed right-0 top-0 z-40 bg-[#040403] w-[250px] h-full transform transition-transform duration-300 ${
-                  isMenuOpen ? "translate-x-0" : "translate-x-full"
-                }`}
+                className={`fixed right-0 top-0 z-40 bg-[#040403] w-[250px] h-full transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+                  }`}
               >
                 <div className="flex flex-col items-start p-6 space-y-4">
                   {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (

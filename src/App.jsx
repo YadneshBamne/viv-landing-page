@@ -588,11 +588,11 @@ const App = () => {
                       <input
                         type="text"
                         placeholder="Search Anything"
-                        className="w-full px-6 py-3 pr-14 rounded-full text-white text-base sm:text-lg bg-neutral-950"
+                        className="w-full px-6 py-5 pr-14 rounded-full text-white text-base sm:text-lg bg-[#080708]"
                       />
                       <Link to="https://chat.cosinv.com/">
-                        <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-black p-2 mr-1 rounded-full hover:bg-amber-50 transition">
-                          <ArrowRight className="w-5 h-5 cursor-pointer" />
+                        <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-black p-2 mr-3 rounded-full hover:bg-amber-50 transition">
+                          <ArrowRight className="w-7 h-7    cursor-pointer" />
                         </button>
                       </Link>
                     </div>

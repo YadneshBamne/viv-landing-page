@@ -50,23 +50,28 @@ const Career = () => {
   const benefits = [
     {
       title: "Competitive Compensation",
-      description: "Attractive cash and equity-based packages to reward top talent.",
+      description:
+        "Attractive cash and equity-based packages to reward top talent.",
     },
     {
       title: "Comprehensive Health Coverage",
-      description: "Medical, dental, vision, and disability insurance for your well-being.",
+      description:
+        "Medical, dental, vision, and disability insurance for your well-being.",
     },
     {
       title: "Flexible Time Off",
-      description: "Work hard, rest well. Take time off when you need it to avoid burnout.",
+      description:
+        "Work hard, rest well. Take time off when you need it to avoid burnout.",
     },
     {
       title: "Visa Sponsorship",
-      description: "Support for international talent to join our mission-driven team.",
+      description:
+        "Support for international talent to join our mission-driven team.",
     },
     {
       title: "Retirement Savings",
-      description: "Secure your financial future with our retirement savings plan.",
+      description:
+        "Secure your financial future with our retirement savings plan.",
     },
   ];
 
@@ -140,7 +145,7 @@ const Career = () => {
         }`}
       >
         <div className="flex flex-col items-start p-6 space-y-4">
-          {["VIV", "API", "NEWS", "CAREER"].map((item) => (
+          {["VIV", "NEWS", "CAREER"].map((item) => (
             <Link
               key={item}
               to={`/${item.toLowerCase()}`}
@@ -154,6 +159,12 @@ const Career = () => {
             className="text-white text-lg hover:text-gray-300"
           >
             DOCS
+          </a>
+          <a
+            href="https://chat.cosinv.com/dashboard"
+            className="text-white text-lg hover:text-gray-300"
+          >
+            API
           </a>
           <Link to="https://chat.cosinv.com/">
             <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
@@ -184,8 +195,13 @@ const Career = () => {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {benefits.map((benefit) => (
-              <div key={benefit.title} className="p-6 bg-neutral-900 rounded-lg text-left">
-                <h3 className="text-white text-xl font-bold mb-2">{benefit.title}</h3>
+              <div
+                key={benefit.title}
+                className="p-6 bg-neutral-900 rounded-lg text-left"
+              >
+                <h3 className="text-white text-xl font-bold mb-2">
+                  {benefit.title}
+                </h3>
                 <p className="text-gray-400 text-base">{benefit.description}</p>
               </div>
             ))}
@@ -199,11 +215,16 @@ const Career = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 justify-items-start md:justify-items-start text-start md:text-left">
             {footerSections.map((section) => (
               <div key={section.title}>
-                <h5 className="text-[#ccc] font-mono text-2xl sm:text-3xl mb-5">{section.title}</h5>
+                <h5 className="text-[#ccc] font-mono text-2xl sm:text-3xl mb-5">
+                  {section.title}
+                </h5>
                 <ul className="space-y-2 text-[#999] text-[15px] sm:text-xl">
                   {section.links.map((link) => (
                     <li key={link}>
-                      <Link to={`/${link.toLowerCase()}`} className="hover:text-gray-300">
+                      <Link
+                        to={`/${link.toLowerCase()}`}
+                        className="hover:text-gray-300"
+                      >
                         {link}
                       </Link>
                     </li>
@@ -267,6 +288,12 @@ const News = () => {
             >
               DOCS
             </a>
+            <a
+              href="https://chat.cosinv.com/dashboard"
+              className="text-white text-lg hover:text-gray-300"
+            >
+              API
+            </a>
           </div>
         </div>
 
@@ -328,6 +355,12 @@ const News = () => {
           >
             DOCS
           </a>
+          <a
+            href="https://chat.cosinv.com/dashboard"
+            className="text-white text-lg hover:text-gray-300"
+          >
+            API
+          </a>
           <Link to="https://chat.cosinv.com/">
             <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
               Try ViV AI
@@ -363,11 +396,16 @@ const News = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 justify-items-start md:justify-items-start text-start md:text-left">
             {footerSections.map((section) => (
               <div key={section.title}>
-                <h5 className="text-[#ccc] font-mono text-2xl sm:text-3xl mb-5">{section.title}</h5>
+                <h5 className="text-[#ccc] font-mono text-2xl sm:text-3xl mb-5">
+                  {section.title}
+                </h5>
                 <ul className="space-y-2 text-[#999] text-[15px] sm:text-xl">
                   {section.links.map((link) => (
                     <li key={link}>
-                      <Link to={`/${link.toLowerCase()}`} className="hover:text-gray-300">
+                      <Link
+                        to={`/${link.toLowerCase()}`}
+                        className="hover:text-gray-300"
+                      >
                         {link}
                       </Link>
                     </li>
@@ -437,10 +475,15 @@ const App = () => {
                   <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
                     <div className="flex items-center space-x-4 font-bold">
                       <Link to="/">
-                        <img className="mr-8" src="./viv.png" width={95} alt="Logo" />
+                        <img
+                          className="mr-8"
+                          src="./viv.png"
+                          width={95}
+                          alt="Logo"
+                        />
                       </Link>
                       <div className="hidden md:flex space-x-10 tracking-wide">
-                        {["VIV", "API", "NEWS", "CAREER"].map((item) => (
+                        {["VIV", "NEWS", "CAREER"].map((item) => (
                           <Link
                             key={item}
                             to={`/${item.toLowerCase()}`}
@@ -455,6 +498,12 @@ const App = () => {
                         >
                           DOCS
                         </a>
+                        <a
+                          href="https://chat.cosinv.com/dashboard"
+                          className="text-white hover:text-gray-300 text-sm sm:text-xl"
+                        >
+                          API
+                        </a>
                       </div>
                     </div>
 
@@ -465,7 +514,10 @@ const App = () => {
                     </Link>
 
                     {/* Mobile Toggle */}
-                    <div className="md:hidden flex items-center" onClick={toggleMenu}>
+                    <div
+                      className="md:hidden flex items-center"
+                      onClick={toggleMenu}
+                    >
                       {isMenuOpen ? (
                         <svg
                           width="24"
@@ -501,7 +553,7 @@ const App = () => {
                     }`}
                   >
                     <div className="flex flex-col items-start p-6 space-y-4">
-                      {["VIV", "API", "NEWS", "CAREER"].map((item) => (
+                      {["VIV", "NEWS", "CAREER"].map((item) => (
                         <Link
                           key={item}
                           to={`/${item.toLowerCase()}`}
@@ -516,6 +568,12 @@ const App = () => {
                       >
                         DOCS
                       </a>
+                      <a
+                        href="https://chat.cosinv.com/dashboard"
+                        className="text-white hover:text-gray-300 text-sm sm:text-xl"
+                      >
+                        API
+                      </a>
                       <Link to="https://chat.cosinv.com/">
                         <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
                           Try ViV AI
@@ -526,7 +584,7 @@ const App = () => {
 
                   {/* Input Field */}
                   <div className="absolute bottom-30 p-4 w-full flex justify-center z-30">
-                    <div className="relative w-full max-w-[580px] px-2">
+                    <div className="relative w-full max-w-[580px] px-2 mb-40">
                       <input
                         type="text"
                         placeholder="Search Anything"
@@ -617,26 +675,51 @@ const App = () => {
                       {
                         title: "API",
                         price: "Smart Surveillance",
-                        features: ["AI-powered detection", "Low latency video analytics", "Cloud/Edge compatible"],
+                        features: [
+                          "AI-powered detection",
+                          "Low latency video analytics",
+                          "Cloud/Edge compatible",
+                        ],
                       },
                       {
                         title: "DOCS",
                         price: "Enterprise Assistant",
-                        features: ["Custom-trained chatbots", "Multi-language NLP", "Seamless integrations"],
+                        features: [
+                          "Custom-trained chatbots",
+                          "Multi-language NLP",
+                          "Seamless integrations",
+                        ],
                       },
                       {
                         title: "ViV AI",
                         price: "Predictive Security",
-                        features: ["Threat detection AI", "Behavior analytics", "Automated response"],
+                        features: [
+                          "Threat detection AI",
+                          "Behavior analytics",
+                          "Automated response",
+                        ],
                       },
                     ].map((product) => (
-                      <div key={product.title} className="relative h-[500px] w-full overflow-hidden mb-10">
+                      <div
+                        key={product.title}
+                        className="relative h-[500px] w-full overflow-hidden mb-10"
+                      >
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <PixelCard variant="red" className="backdrop-blur-3xl">
-                            <ShineBorder shineColor={["#D7F9F1", "#40434E", "#FFF7F8"]} className="rounded-3xl" />
+                          <PixelCard
+                            variant="red"
+                            className="backdrop-blur-3xl"
+                          >
+                            <ShineBorder
+                              shineColor={["#D7F9F1", "#40434E", "#FFF7F8"]}
+                              className="rounded-3xl"
+                            />
                             <div className="absolute p-6 text-left hover:scale-[1.02] transition-transform shadow-md">
-                              <h3 className="text-white text-4xl font-extrabold mb-6">{product.title}</h3>
-                              <p className="text-white mb-4 text-2xl font-bold tracking-wide">{product.price}</p>
+                              <h3 className="text-white text-4xl font-extrabold mb-6">
+                                {product.title}
+                              </h3>
+                              <p className="text-white mb-4 text-2xl font-bold tracking-wide">
+                                {product.price}
+                              </p>
                               <ul className="text-lg text-white space-y-2 mb-6 font-semibold tracking-wide">
                                 {product.features.map((feat) => (
                                   <li key={feat}>• {feat}</li>
@@ -674,31 +757,52 @@ const App = () => {
                       {
                         title: "Free",
                         price: "₹0",
-                        features: ["Basic access", "Limited API calls", "Community support"],
+                        features: [
+                          "Basic access",
+                          "Limited API calls",
+                          "Community support",
+                        ],
                       },
                       {
                         title: "Pro",
                         price: "₹999/mo",
-                        features: ["Unlimited API usage", "Priority support", "Access to beta features"],
+                        features: [
+                          "Unlimited API usage",
+                          "Priority support",
+                          "Access to beta features",
+                        ],
                       },
                       {
                         title: "Enterprise",
                         price: "Custom",
-                        features: ["Dedicated infra", "SLA guarantees", "Onboarding + training"],
+                        features: [
+                          "Dedicated infra",
+                          "SLA guarantees",
+                          "Onboarding + training",
+                        ],
                       },
                     ].map((plan) => (
                       <div key={plan.title} className="flex justify-center">
-                        <PixelCard variant="yellow" className="backdrop-blur-3xl">
+                        <PixelCard
+                          variant="yellow"
+                          className="backdrop-blur-3xl"
+                        >
                           <div className="absolute p-6 text-left hover:scale-[1.02] transition-transform shadow-md">
-                            <h3 className="text-white text-5xl font-extrabold mb-10">{plan.title}</h3>
-                            <p className="text-white mb-4 text-xl font-extrabold tracking-wide">{plan.price}</p>
+                            <h3 className="text-white text-5xl font-extrabold mb-10">
+                              {plan.title}
+                            </h3>
+                            <p className="text-white mb-4 text-xl font-extrabold tracking-wide">
+                              {plan.price}
+                            </p>
                             <ul className="text-md text-white space-y-2 mb-6 font-extrabold tracking-widest">
                               {plan.features.map((feat) => (
                                 <li key={feat}>• {feat}</li>
                               ))}
                             </ul>
                             <button className="flex items-center justify-center gap-2 cursor-pointer w-full border border-white text-white rounded-full py-2 hover:bg-white hover:text-black transition-all font-semibold">
-                              {plan.title === "Enterprise" ? "Contact Us" : "Get Started"}
+                              {plan.title === "Enterprise"
+                                ? "Contact Us"
+                                : "Get Started"}
                               <MoveRight className="ml-2" size={20} />
                             </button>
                           </div>
@@ -710,16 +814,24 @@ const App = () => {
               </section>
 
               {/* FOOTER */}
-              <div className="w-full min-h-screen bg-gradient-to-t from-[#1E2019] to-[#010101] to-55% flex items-center justify-center" id="footer">
+              <div
+                className="w-full min-h-screen bg-gradient-to-t from-[#1E2019] to-[#010101] to-55% flex items-center justify-center"
+                id="footer"
+              >
                 <div className="w-full max-w-6xl px-6 sm:px-10 text-[1.3rem]">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 justify-items-start md:justify-items-start text-start md:text-left">
                     {footerSections.map((section) => (
                       <div key={section.title}>
-                        <h5 className="text-[#ccc] font-mono text-2xl sm:text-3xl mb-5">{section.title}</h5>
+                        <h5 className="text-[#ccc] font-mono text-2xl sm:text-3xl mb-5">
+                          {section.title}
+                        </h5>
                         <ul className="space-y-2 text-[#999] text-[15px] sm:text-xl">
                           {section.links.map((link) => (
                             <li key={link}>
-                              <Link to={`/${link.toLowerCase()}`} className="hover:text-gray-300">
+                              <Link
+                                to={`/${link.toLowerCase()}`}
+                                className="hover:text-gray-300"
+                              >
                                 {link}
                               </Link>
                             </li>
@@ -744,10 +856,15 @@ const App = () => {
               <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between z-40">
                 <div className="flex items-center space-x-4 font-bold">
                   <Link to="/">
-                    <img className="mr-8" src="./viv.png" width={80} alt="Logo" />
+                    <img
+                      className="mr-8"
+                      src="./viv.png"
+                      width={80}
+                      alt="Logo"
+                    />
                   </Link>
                   <div className="hidden md:flex space-x-10 tracking-wide">
-                    {["VIV", "API", "NEWS", "CAREER"].map((item) => (
+                    {["VIV", "NEWS", "CAREER"].map((item) => (
                       <Link
                         key={item}
                         to={`/${item.toLowerCase()}`}
@@ -762,6 +879,12 @@ const App = () => {
                     >
                       DOCS
                     </a>
+                    <a
+                      href="https://chat.cosinv.com/dashboard"
+                      className="text-white hover:text-gray-300 text-sm sm:text-xl"
+                    >
+                      API
+                    </a>
                   </div>
                 </div>
 
@@ -772,7 +895,10 @@ const App = () => {
                 </Link>
 
                 {/* Mobile Toggle */}
-                <div className="md:hidden flex items-center" onClick={toggleMenu}>
+                <div
+                  className="md:hidden flex items-center"
+                  onClick={toggleMenu}
+                >
                   {isMenuOpen ? (
                     <svg
                       width="24"
@@ -808,7 +934,7 @@ const App = () => {
                 }`}
               >
                 <div className="flex flex-col items-start p-6 space-y-4">
-                  {["VIV", "API", "NEWS", "CAREER"].map((item) => (
+                  {["VIV", "NEWS", "CAREER"].map((item) => (
                     <Link
                       key={item}
                       to={`/${item.toLowerCase()}`}
@@ -822,6 +948,12 @@ const App = () => {
                     className="text-white text-lg hover:text-gray-300"
                   >
                     DOCS
+                  </a>
+                  <a
+                    href="https://chat.cosinv.com/dashboard"
+                    className="text-white hover:text-gray-300 text-sm sm:text-xl"
+                  >
+                    API
                   </a>
                   <Link to="https://chat.cosinv.com/">
                     <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">

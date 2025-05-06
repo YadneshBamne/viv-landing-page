@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { ArrowRight, MenuIcon, MoveRight } from "lucide-react";
+import { ArrowRight, MenuIcon, MoveRight, Play } from "lucide-react";
 import Lottie from "lottie-react";
 import Spline from "@splinetool/react-spline";
 import Particles from "./bits/Particles";
 import PixelCard from "./bits/PixelCard";
 import { ShineBorder } from "./components/magicui/shine-border";
-import "./App.css";
+import { motion } from "framer-motion";
 import notFoundAnimation from "./assets/notfound.json"; // Replace with your actual Lottie file path
+
+// Placeholder Button Component (Replace with actual implementation, e.g., from shadcn/ui)
+const Button = ({ size, className, children, ...props }) => {
+  const sizeClasses = size === "lg" ? "text-lg" : "text-base";
+  return (
+    <button
+      className={`px-4 py-2 rounded ${sizeClasses} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
 
 // Career Component
 const Career = () => {
@@ -37,28 +50,23 @@ const Career = () => {
   const benefits = [
     {
       title: "Competitive Compensation",
-      description:
-        "Attractive cash and equity-based packages to reward top talent.",
+      description: "Attractive cash and equity-based packages to reward top talent.",
     },
     {
       title: "Comprehensive Health Coverage",
-      description:
-        "Medical, dental, vision, and disability insurance for your well-being.",
+      description: "Medical, dental, vision, and disability insurance for your well-being.",
     },
     {
       title: "Flexible Time Off",
-      description:
-        "Work hard, rest well. Take time off when you need it to avoid burnout.",
+      description: "Work hard, rest well. Take time off when you need it to avoid burnout.",
     },
     {
       title: "Visa Sponsorship",
-      description:
-        "Support for international talent to join our mission-driven team.",
+      description: "Support for international talent to join our mission-driven team.",
     },
     {
       title: "Retirement Savings",
-      description:
-        "Secure your financial future with our retirement savings plan.",
+      description: "Secure your financial future with our retirement savings plan.",
     },
   ];
 
@@ -71,9 +79,9 @@ const Career = () => {
             <img className="mr-8" src="./viv.png" width={80} alt="Logo" />
           </Link>
           <div className="hidden md:flex space-x-10 tracking-wide">
-            {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
+            {["VIV", "API", "NEWS", "CAREER"].map((item) => (
               <Link
-                key={i}
+                key={item}
                 to={`/${item.toLowerCase()}`}
                 className="text-white hover:text-gray-300 text-sm sm:text-xl"
               >
@@ -132,9 +140,9 @@ const Career = () => {
         }`}
       >
         <div className="flex flex-col items-start p-6 space-y-4">
-          {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
+          {["VIV", "API", "NEWS", "CAREER"].map((item) => (
             <Link
-              key={i}
+              key={item}
               to={`/${item.toLowerCase()}`}
               className="text-white text-lg hover:text-gray-300"
             >
@@ -148,7 +156,7 @@ const Career = () => {
             DOCS
           </a>
           <Link to="https://chat.cosinv.com/">
-            <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
+            <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
               Try ViV AI
             </button>
           </Link>
@@ -175,14 +183,9 @@ const Career = () => {
             Why Work at ViV AI?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {benefits.map((benefit, idx) => (
-              <div
-                key={idx}
-                className="p-6 bg-neutral-900 rounded-lg text-left"
-              >
-                <h3 className="text-white text-xl font-bold mb-2">
-                  {benefit.title}
-                </h3>
+            {benefits.map((benefit) => (
+              <div key={benefit.title} className="p-6 bg-neutral-900 rounded-lg text-left">
+                <h3 className="text-white text-xl font-bold mb-2">{benefit.title}</h3>
                 <p className="text-gray-400 text-base">{benefit.description}</p>
               </div>
             ))}
@@ -194,18 +197,13 @@ const Career = () => {
       <div className="w-full min-h-screen bg-gradient-to-t from-[#1E2019] to-[#010101] to-55% flex items-center justify-center pb-24 mt-10">
         <div className="w-full max-w-6xl px-6 sm:px-10 text-[1.3rem]">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 justify-items-start md:justify-items-start text-start md:text-left">
-            {footerSections.map((section, index) => (
-              <div key={`footer-${index}`}>
-                <h5 className="text-[#ccc] font-mono text-2xl sm:text-3xl mb-5">
-                  {section.title}
-                </h5>
+            {footerSections.map((section) => (
+              <div key={section.title}>
+                <h5 className="text-[#ccc] font-mono text-2xl sm:text-3xl mb-5">{section.title}</h5>
                 <ul className="space-y-2 text-[#999] text-[15px] sm:text-xl">
-                  {section.links.map((link, linkIndex) => (
-                    <li key={`link-${index}-${linkIndex}`}>
-                      <Link
-                        to={`/${link.toLowerCase()}`}
-                        className="hover:text-gray-300"
-                      >
+                  {section.links.map((link) => (
+                    <li key={link}>
+                      <Link to={`/${link.toLowerCase()}`} className="hover:text-gray-300">
                         {link}
                       </Link>
                     </li>
@@ -254,9 +252,9 @@ const News = () => {
             <img className="mr-8" src="./viv.png" width={80} alt="Logo" />
           </Link>
           <div className="hidden md:flex space-x-10 tracking-wide">
-            {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
+            {["VIV", "API", "NEWS", "CAREER"].map((item) => (
               <Link
-                key={i}
+                key={item}
                 to={`/${item.toLowerCase()}`}
                 className="text-white hover:text-gray-300 text-sm sm:text-xl"
               >
@@ -315,9 +313,9 @@ const News = () => {
         }`}
       >
         <div className="flex flex-col items-start p-6 space-y-4">
-          {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
+          {["VIV", "API", "NEWS", "CAREER"].map((item) => (
             <Link
-              key={i}
+              key={item}
               to={`/${item.toLowerCase()}`}
               className="text-white text-lg hover:text-gray-300"
             >
@@ -331,7 +329,7 @@ const News = () => {
             DOCS
           </a>
           <Link to="https://chat.cosinv.com/">
-            <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
+            <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
               Try ViV AI
             </button>
           </Link>
@@ -363,18 +361,13 @@ const News = () => {
       <div className="w-full min-h-screen bg-gradient-to-t from-[#1E2019] to-[#010101] to-55% flex items-center justify-center pb-24 mt-10">
         <div className="w-full max-w-6xl px-6 sm:px-10 text-[1.3rem]">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 justify-items-start md:justify-items-start text-start md:text-left">
-            {footerSections.map((section, index) => (
-              <div key={`footer-${index}`}>
-                <h5 className="text-[#ccc] font-mono text-2xl sm:text-3xl mb-5">
-                  {section.title}
-                </h5>
+            {footerSections.map((section) => (
+              <div key={section.title}>
+                <h5 className="text-[#ccc] font-mono text-2xl sm:text-3xl mb-5">{section.title}</h5>
                 <ul className="space-y-2 text-[#999] text-[15px] sm:text-xl">
-                  {section.links.map((link, linkIndex) => (
-                    <li key={`link-${index}-${linkIndex}`}>
-                      <Link
-                        to={`/${link.toLowerCase()}`}
-                        className="hover:text-gray-300"
-                      >
+                  {section.links.map((link) => (
+                    <li key={link}>
+                      <Link to={`/${link.toLowerCase()}`} className="hover:text-gray-300">
                         {link}
                       </Link>
                     </li>
@@ -393,6 +386,7 @@ const News = () => {
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -443,17 +437,12 @@ const App = () => {
                   <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
                     <div className="flex items-center space-x-4 font-bold">
                       <Link to="/">
-                        <img
-                          className="mr-8"
-                          src="./viv.png"
-                          width={95}
-                          alt="Logo"
-                        />
+                        <img className="mr-8" src="./viv.png" width={95} alt="Logo" />
                       </Link>
                       <div className="hidden md:flex space-x-10 tracking-wide">
-                        {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
+                        {["VIV", "API", "NEWS", "CAREER"].map((item) => (
                           <Link
-                            key={i}
+                            key={item}
                             to={`/${item.toLowerCase()}`}
                             className="text-white hover:text-gray-300 text-sm sm:text-xl"
                           >
@@ -471,15 +460,12 @@ const App = () => {
 
                     <Link to="https://chat.cosinv.com/">
                       <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
-                        Try ViV AI
+                        Try VIV AI
                       </button>
                     </Link>
 
                     {/* Mobile Toggle */}
-                    <div
-                      className="md:hidden flex items-center"
-                      onClick={toggleMenu}
-                    >
+                    <div className="md:hidden flex items-center" onClick={toggleMenu}>
                       {isMenuOpen ? (
                         <svg
                           width="24"
@@ -515,9 +501,9 @@ const App = () => {
                     }`}
                   >
                     <div className="flex flex-col items-start p-6 space-y-4">
-                      {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
+                      {["VIV", "API", "NEWS", "CAREER"].map((item) => (
                         <Link
-                          key={i}
+                          key={item}
                           to={`/${item.toLowerCase()}`}
                           className="text-white text-lg hover:text-gray-300"
                         >
@@ -531,7 +517,7 @@ const App = () => {
                         DOCS
                       </a>
                       <Link to="https://chat.cosinv.com/">
-                        <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
+                        <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
                           Try ViV AI
                         </button>
                       </Link>
@@ -544,7 +530,7 @@ const App = () => {
                       <input
                         type="text"
                         placeholder="Search Anything"
-                        className="w-full px-6 py-3 pr-14 rounded-full text-white text-base sm:text-lg bg-neutral-950 "
+                        className="w-full px-6 py-3 pr-14 rounded-full text-white text-base sm:text-lg bg-neutral-950"
                       />
                       <Link to="https://chat.cosinv.com/">
                         <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-black p-2 mr-1 rounded-full hover:bg-amber-50 transition">
@@ -556,10 +542,74 @@ const App = () => {
                 </div>
               </div>
 
+              {/* Video Section */}
+              <section
+                id="video-section"
+                className="pt-4 mt-16 md:-mt-3 flex justify-center px-4 md:px-0 bg-[#010101]"
+              >
+                <div className="container">
+                  <div className="max-w-[1100px] mx-auto">
+                    {/* Browser Window Mockup */}
+                    <div className="rounded-xl overflow-hidden bg-zinc-900/50 shadow-2xl border border-white/5">
+                      {/* Browser Controls */}
+                      <div className="flex items-center gap-2 px-4 py-3 bg-black/40 border-b border-white/5">
+                        <div className="flex gap-1.5">
+                          <div className="w-3 h-3 rounded-full bg-red-600" />
+                          <div className="w-3 h-3 rounded-full bg-yellow-600" />
+                          <div className="w-3 h-3 rounded-full bg-green-600" />
+                        </div>
+                        <div className="flex-1 mx-4">
+                          <div className="bg-black/40 rounded-md py-1.5 px-3 text-xs text-white max-w-[300px] flex items-center gap-2">
+                            <div className="w-4 h-4 rounded-full bg-zinc-800" />
+                            cosinv.com
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Video/Content Area */}
+                      <div className="aspect-[16/9] relative">
+                        {isPlaying ? (
+                          <iframe
+                            src={`https://player.vimeo.com/video/1055784280?h=your_hash_here&autoplay=1&title=0&byline=0&portrait=0`}
+                            className="w-full h-full"
+                            allow="autoplay; fullscreen; picture-in-picture"
+                            allowFullScreen
+                          />
+                        ) : (
+                          <div
+                            className="absolute inset-0 flex items-center justify-center cursor-pointer group"
+                            onClick={() => setIsPlaying(true)}
+                          >
+                            <div className="absolute inset-0">
+                              <img
+                                src="/chat.png"
+                                alt="Weaves every interaction into a web of knowledge"
+                                fill
+                                className="object-cover"
+                                priority
+                                unoptimized
+                              />
+                            </div>
+                            <div>
+                              <Button
+                                size="lg"
+                                className="relative z-10 size-16 md:size-20 rounded-full p-2 bg-black/20 hover:bg-black/30 transition-all duration-200 backdrop-blur-sm"
+                              >
+                                <Play className="size-6 md:size-11 text-white" />
+                              </Button>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               {/* PRODUCTS Section */}
               <section className="w-full min-h-screen flex items-center justify-center px-4 bg-[#010101]">
                 <div className="max-w-6xl w-full text-center">
-                  <h1 className="text-white text-5xl sm:text-8xl font-bold font-mono mb-15">
+                  <h1 className="text-white text-5xl sm:text-8xl font-bold font-mono mb-16">
                     PRODUCTS
                   </h1>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
@@ -567,54 +617,29 @@ const App = () => {
                       {
                         title: "API",
                         price: "Smart Surveillance",
-                        features: [
-                          "AI-powered detection",
-                          "Low latency video analytics",
-                          "Cloud/Edge compatible",
-                        ],
+                        features: ["AI-powered detection", "Low latency video analytics", "Cloud/Edge compatible"],
                       },
                       {
                         title: "DOCS",
                         price: "Enterprise Assistant",
-                        features: [
-                          "Custom-trained chatbots",
-                          "Multi-language NLP",
-                          "Seamless integrations",
-                        ],
+                        features: ["Custom-trained chatbots", "Multi-language NLP", "Seamless integrations"],
                       },
                       {
                         title: "ViV AI",
                         price: "Predictive Security",
-                        features: [
-                          "Threat detection AI",
-                          "Behavior analytics",
-                          "Automated response",
-                        ],
+                        features: ["Threat detection AI", "Behavior analytics", "Automated response"],
                       },
-                    ].map((product, idx) => (
-                      <div
-                        key={idx}
-                        className="relative h-[500px] w-full overflow-hidden mb-10"
-                      >
+                    ].map((product) => (
+                      <div key={product.title} className="relative h-[500px] w-full overflow-hidden mb-10">
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <PixelCard
-                            variant="red"
-                            className="backdrop-blur-3xl"
-                          >
-                            <ShineBorder
-                              shineColor={["#D7F9F1", "#40434E", "#FFF7F8"]}
-                              className="rounded-3xl"
-                            />
+                          <PixelCard variant="red" className="backdrop-blur-3xl">
+                            <ShineBorder shineColor={["#D7F9F1", "#40434E", "#FFF7F8"]} className="rounded-3xl" />
                             <div className="absolute p-6 text-left hover:scale-[1.02] transition-transform shadow-md">
-                              <h3 className="text-white text-4xl font-extrabold mb-6">
-                                {product.title}
-                              </h3>
-                              <p className="text-white mb-4 text-2xl font-bold tracking-wide">
-                                {product.price}
-                              </p>
+                              <h3 className="text-white text-4xl font-extrabold mb-6">{product.title}</h3>
+                              <p className="text-white mb-4 text-2xl font-bold tracking-wide">{product.price}</p>
                               <ul className="text-lg text-white space-y-2 mb-6 font-semibold tracking-wide">
-                                {product.features.map((feat, i) => (
-                                  <li key={i}>• {feat}</li>
+                                {product.features.map((feat) => (
+                                  <li key={feat}>• {feat}</li>
                                 ))}
                               </ul>
                             </div>
@@ -641,7 +666,7 @@ const App = () => {
                   />
                 </div>
                 <div className="relative z-10 max-w-6xl w-full text-center">
-                  <h1 className="text-white text-4xl sm:text-8xl font-bold font-mono mb-15">
+                  <h1 className="text-white text-4xl sm:text-8xl font-bold font-mono mb-16">
                     PRICING PLANS
                   </h1>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
@@ -649,52 +674,31 @@ const App = () => {
                       {
                         title: "Free",
                         price: "₹0",
-                        features: [
-                          "Basic access",
-                          "Limited API calls",
-                          "Community support",
-                        ],
+                        features: ["Basic access", "Limited API calls", "Community support"],
                       },
                       {
                         title: "Pro",
                         price: "₹999/mo",
-                        features: [
-                          "Unlimited API usage",
-                          "Priority support",
-                          "Access to beta features",
-                        ],
+                        features: ["Unlimited API usage", "Priority support", "Access to beta features"],
                       },
                       {
                         title: "Enterprise",
                         price: "Custom",
-                        features: [
-                          "Dedicated infra",
-                          "SLA guarantees",
-                          "Onboarding + training",
-                        ],
+                        features: ["Dedicated infra", "SLA guarantees", "Onboarding + training"],
                       },
-                    ].map((plan, idx) => (
-                      <div key={idx} className="flex justify-center">
-                        <PixelCard
-                          variant="yellow"
-                          className="backdrop-blur-3xl"
-                        >
+                    ].map((plan) => (
+                      <div key={plan.title} className="flex justify-center">
+                        <PixelCard variant="yellow" className="backdrop-blur-3xl">
                           <div className="absolute p-6 text-left hover:scale-[1.02] transition-transform shadow-md">
-                            <h3 className="text-white text-5xl font-extrabold mb-10">
-                              {plan.title}
-                            </h3>
-                            <p className="text-white mb-4 text-xl font-extrabold tracking-wide">
-                              {plan.price}
-                            </p>
+                            <h3 className="text-white text-5xl font-extrabold mb-10">{plan.title}</h3>
+                            <p className="text-white mb-4 text-xl font-extrabold tracking-wide">{plan.price}</p>
                             <ul className="text-md text-white space-y-2 mb-6 font-extrabold tracking-widest">
-                              {plan.features.map((feat, i) => (
-                                <li key={i}>• {feat}</li>
+                              {plan.features.map((feat) => (
+                                <li key={feat}>• {feat}</li>
                               ))}
                             </ul>
                             <button className="flex items-center justify-center gap-2 cursor-pointer w-full border border-white text-white rounded-full py-2 hover:bg-white hover:text-black transition-all font-semibold">
-                              {plan.title === "Enterprise"
-                                ? "Contact Us"
-                                : "Get Started"}
+                              {plan.title === "Enterprise" ? "Contact Us" : "Get Started"}
                               <MoveRight className="ml-2" size={20} />
                             </button>
                           </div>
@@ -706,24 +710,16 @@ const App = () => {
               </section>
 
               {/* FOOTER */}
-              <div
-                className="w-full min-h-screen bg-gradient-to-t from-[#1E2019] to-[#010101] to-55% flex items-center justify-center"
-                id="footer"
-              >
+              <div className="w-full min-h-screen bg-gradient-to-t from-[#1E2019] to-[#010101] to-55% flex items-center justify-center" id="footer">
                 <div className="w-full max-w-6xl px-6 sm:px-10 text-[1.3rem]">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 justify-items-start md:justify-items-start text-start md:text-left">
-                    {footerSections.map((section, index) => (
-                      <div key={`footer-${index}`}>
-                        <h5 className="text-[#ccc] font-mono text-2xl sm:text-3xl mb-5">
-                          {section.title}
-                        </h5>
+                    {footerSections.map((section) => (
+                      <div key={section.title}>
+                        <h5 className="text-[#ccc] font-mono text-2xl sm:text-3xl mb-5">{section.title}</h5>
                         <ul className="space-y-2 text-[#999] text-[15px] sm:text-xl">
-                          {section.links.map((link, linkIndex) => (
-                            <li key={`link-${index}-${linkIndex}`}>
-                              <Link
-                                to={`/${link.toLowerCase()}`}
-                                className="hover:text-gray-300"
-                              >
+                          {section.links.map((link) => (
+                            <li key={link}>
+                              <Link to={`/${link.toLowerCase()}`} className="hover:text-gray-300">
                                 {link}
                               </Link>
                             </li>
@@ -748,17 +744,12 @@ const App = () => {
               <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between z-40">
                 <div className="flex items-center space-x-4 font-bold">
                   <Link to="/">
-                    <img
-                      className="mr-8"
-                      src="./viv.png"
-                      width={80}
-                      alt="Logo"
-                    />
+                    <img className="mr-8" src="./viv.png" width={80} alt="Logo" />
                   </Link>
                   <div className="hidden md:flex space-x-10 tracking-wide">
-                    {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
+                    {["VIV", "API", "NEWS", "CAREER"].map((item) => (
                       <Link
-                        key={i}
+                        key={item}
                         to={`/${item.toLowerCase()}`}
                         className="text-white hover:text-gray-300 text-sm sm:text-xl"
                       >
@@ -781,10 +772,7 @@ const App = () => {
                 </Link>
 
                 {/* Mobile Toggle */}
-                <div
-                  className="md:hidden flex items-center"
-                  onClick={toggleMenu}
-                >
+                <div className="md:hidden flex items-center" onClick={toggleMenu}>
                   {isMenuOpen ? (
                     <svg
                       width="24"
@@ -820,9 +808,9 @@ const App = () => {
                 }`}
               >
                 <div className="flex flex-col items-start p-6 space-y-4">
-                  {["VIV", "API", "NEWS", "CAREER"].map((item, i) => (
+                  {["VIV", "API", "NEWS", "CAREER"].map((item) => (
                     <Link
-                      key={i}
+                      key={item}
                       to={`/${item.toLowerCase()}`}
                       className="text-white text-lg hover:text-gray-300"
                     >
@@ -836,7 +824,7 @@ const App = () => {
                     DOCS
                   </a>
                   <Link to="https://chat.cosinv.com/">
-                    <button className="hidden md:block text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
+                    <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
                       Try ViV AI
                     </button>
                   </Link>

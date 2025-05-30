@@ -8,7 +8,9 @@ import PixelCard from "./bits/PixelCard";
 import { ShineBorder } from "./components/magicui/shine-border";
 import "./App.css";
 import notFoundAnimation from "./assets/notfound.json"; // Replace with your actual Lottie file path
-
+import HelpFAQ from "./Help";
+import ReleaseNotes from "./RN";
+import TermsPolicy from "./TP";
 // Career Component
 const Career = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -738,6 +740,9 @@ const App = () => {
         />
         <Route path="/career" element={<Career />} />
         <Route path="/news" element={<News />} />
+        <Route path="/help-faq" element={<HelpFAQ />} />
+        <Route path="/release-notes" element={<ReleaseNotes />} />
+        <Route path="/terms" element={<TermsPolicy />} />
         {/* Fallback for undefined routes like /api, /docs, /playground */}
         <Route
           path="*"

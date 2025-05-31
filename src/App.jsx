@@ -362,7 +362,7 @@ function AnimatedAIChat() {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="inline-block"
           >
-            <h1 className="text-6xl sm:text-5xl md:text-7xl lg:text-9xl font-medium tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white/90 to-white/40 pb-1">
+            <h1 className="text-6xl sm:text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white/90 to-white/40 pb-1">
               VIV AI
             </h1>
             <motion.div

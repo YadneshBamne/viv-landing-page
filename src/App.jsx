@@ -362,7 +362,7 @@ function AnimatedAIChat() {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="inline-block"
           >
-            <h1 className="text-6xl sm:text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white/90 to-white/40 pb-1">
+            <h1 className="text-6xl sm:text-5xl md:text-7xl lg:text-9xl font-meduim  tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-white/90 to-white/40 pb-1">
               VIV AI
             </h1>
             <motion.div
@@ -1497,9 +1497,9 @@ const App = () => {
                     <div className="flex items-center space-x-4">
                       <Link to="/">
                         <img
-                          className="mr-4"
-                          src="./v.jpg"
-                          width={85}
+                          className="mr-6 mt-2"
+                          src="./v3.png"
+                          width={75}
                           alt="Logo"
                         />
                       </Link>

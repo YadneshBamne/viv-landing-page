@@ -1480,7 +1480,7 @@ const App = () => {
         <Route
           path="/"
           element={
-            <div className="relative w-full overflow-x-hidden text-white bg-[#0A0A0C]">
+            <div className="relative w-full overflow-x-hidden text-white bg-[#07080A]">
               {/* SPLINE BACKGROUND SECTION */}
               <div className="relative w-full h-screen">
                 {/* <Spline
@@ -1498,7 +1498,7 @@ const App = () => {
                       <Link to="/">
                         <img
                           className="mr-4"
-                          src="./viv.png"
+                          src="./v.jpg"
                           width={85}
                           alt="Logo"
                         />
@@ -1576,7 +1576,7 @@ const App = () => {
 
                   {/* Mobile Sidebar */}
                   <div
-                    className={`fixed right-0 top-0 z-40 bg-[#040403] w-[250px] h-full transform transition-transform duration-300 ${
+                    className={`fixed right-0 top-0 z-40 bg-[#07080A] w-[250px] h-full transform transition-transform duration-300 ${
                       isMenuOpen ? "translate-x-0" : "translate-x-full"
                     }`}
                   >
@@ -1677,7 +1677,7 @@ const App = () => {
               {/* Products Section */}
               <section
                 id="products"
-                className="w-full py-20 md:py-32 bg-[#0A0A0C] relative overflow-hidden flex justify-center"
+                className="w-full py-20 md:py-32 bg-[#07080A] relative overflow-hidden flex justify-center"
               >
                 <div className="absolute inset-0 -z-10 h-full w-full bg-gray-900 bg-[linear-gradient(to_right,#2d2d2d_1px,transparent_1px),linear-gradient(to_bottom,#2d2d2d_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)]"></div>
 
@@ -1784,7 +1784,7 @@ const App = () => {
               {/* Pricing Section */}
               <section
                 id="pricing"
-                className="w-full py-20 md:py-20 bg-[#0A0A0C] relative overflow-hidden flex justify-center"
+                className="w-full py-20 md:py-20 bg-[#07080A] relative overflow-hidden flex justify-center"
               >
                 <div className="absolute inset-0 -z-10 h-full w-full bg-gray-900 bg-[linear-gradient(to_right,#2d2d2d_1px,transparent_1px),linear-gradient(to_bottom,#2d2d2d_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)]"></div>
 
@@ -2038,7 +2038,7 @@ const App = () => {
               </section>
 
               {/* Footer */}
-              <footer className="bg-[#0A0A0C] backdrop-blur-sm flex justify-center">
+              <footer className="bg-[#07080A] backdrop-blur-sm flex justify-center">
                 <div className="container flex flex-col gap-8 px-4 py-10 md:px-6 lg:py-16">
                   <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
                     <div className="space-y-4">

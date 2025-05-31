@@ -34,6 +34,7 @@ import {
   MonitorIcon,
   Mic2,
   Mic,
+  Atom,
 } from "lucide-react";
 import Lottie from "lottie-react";
 import Spline from "@splinetool/react-spline";
@@ -52,6 +53,9 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import TermsPolicy from "./TP";
+import HelpFAQ from "./Help";
+import ReleaseNotes from "./RN";
 
 // Placeholder Button Component
 const Button = ({ size, className, children, ...props }) => {
@@ -231,8 +235,8 @@ function AnimatedAIChat() {
       prefix: "/clone",
     },
     {
-      icon: <Figma className="w-4 h-4" />,
-      label: "Import Figma",
+      icon: <Atom className="w-4 h-4" />,
+      label: "Research",
       description: "Import a design from Figma",
       prefix: "/figma",
     },
@@ -578,7 +582,7 @@ function AnimatedAIChat() {
             <div className="flex items-center gap-3">
               <div className="w-8 h-7 rounded-full bg-white/[0.05] flex items-center justify-center text-center">
                 <span className="text-xs font-medium text-white/90 mb-0.5">
-                  ViV
+                  VIV
                 </span>
               </div>
               <div className="flex items-center gap-2 text-sm text-white/70">
@@ -1002,22 +1006,22 @@ const Career = () => {
             </p>
             <div className="flex gap-4">
               <Link
-                href="#"
+                href="/release-notes"
                 className="text-xs text-gray-400 hover:text-white transition-colors"
               >
-                Privacy Policy
+                Release Notes
               </Link>
               <Link
                 href="#"
                 className="text-xs text-gray-400 hover:text-white transition-colors"
               >
-                Terms of Service
+                Terms and policy
               </Link>
               <Link
                 href="#"
                 className="text-xs text-gray-400 hover:text-white transition-colors"
               >
-                Cookie Policy
+                Help & FAQ
               </Link>
             </div>
           </div>
@@ -2222,7 +2226,7 @@ const App = () => {
                         </li>
                         <li>
                           <Link
-                            href="#"
+                            href="/terms"
                             className="text-gray-400 hover:text-white transition-colors"
                           >
                             Terms of Service
@@ -2237,23 +2241,23 @@ const App = () => {
                     </p>
                     <div className="flex gap-4">
                       <Link
-                        href="#"
-                        className="text-xs text-gray-400 hover:text-white transition-colors"
-                      >
-                        Privacy Policy
-                      </Link>
-                      <Link
-                        href="#"
-                        className="text-xs text-gray-400 hover:text-white transition-colors"
-                      >
-                        Terms of Service
-                      </Link>
-                      <Link
-                        href="#"
-                        className="text-xs text-gray-400 hover:text-white transition-colors"
-                      >
-                        Cookie Policy
-                      </Link>
+                to="/release-notes"
+                className="text-xs text-gray-400 hover:text-white transition-colors"
+              >
+                Release Notes
+              </Link>
+              <Link
+                to="/terms"
+                className="text-xs text-gray-400 hover:text-white transition-colors"
+              >
+                Terms and policy
+              </Link>
+              <Link
+                to="/help-faq"
+                className="text-xs text-gray-400 hover:text-white transition-colors"
+              >
+                Help & FAQ
+              </Link>
                     </div>
                   </div>
                 </div>
@@ -2263,6 +2267,9 @@ const App = () => {
         />
         <Route path="/career" element={<Career />} />
         <Route path="/news" element={<News />} />
+        <Route path="/terms" element={<TermsPolicy />} />
+        <Route path="/help-faq" element={<HelpFAQ />} />
+        <Route path="/release-notes" element={<ReleaseNotes />} />
         <Route
           path="*"
           element={

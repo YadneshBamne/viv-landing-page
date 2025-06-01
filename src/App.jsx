@@ -238,7 +238,7 @@ function AnimatedAIChat() {
       icon: <Atom className="w-4 h-4" />,
       label: "Research",
       description: "Import a design from Figma",
-      prefix: "/figma",
+      prefix: "/research",
     },
     {
       icon: <MonitorIcon className="w-4 h-4" />,

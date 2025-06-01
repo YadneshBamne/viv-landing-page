@@ -2210,37 +2210,37 @@ const App = () => {
                         </li>
                         <li>
                           <Link
-                            href="#"
+                            to="/release-notes"
                             className="text-gray-400 hover:text-white transition-colors"
                           >
-                            Careers
+                            Release Notes
                           </Link>
                         </li>
                         <li>
                           <Link
-                            href="#"
+                            to="/terms"
                             className="text-gray-400 hover:text-white transition-colors"
                           >
-                            Privacy Policy
+                            Terms and policy
                           </Link>
                         </li>
                         <li>
                           <Link
-                            href="/terms"
+                            to="/help-faq"
                             className="text-gray-400 hover:text-white transition-colors"
                           >
-                            Terms of Service
+                            Help & FAQ
                           </Link>
                         </li>
                       </ul>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-4 sm:flex-row justify-between items-center pt-8">
+                  <div className="flex flex-col gap-4 sm:flex-row justify-center items-center pt-8">
                     <p className="text-xs text-gray-400">
                       © {new Date().getFullYear()} COSINV. All rights reserved.
                     </p>
                     <div className="flex gap-4">
-                      <Link
+                      {/* <Link
                 to="/release-notes"
                 className="text-xs text-gray-400 hover:text-white transition-colors"
               >
@@ -2257,7 +2257,7 @@ const App = () => {
                 className="text-xs text-gray-400 hover:text-white transition-colors"
               >
                 Help & FAQ
-              </Link>
+              </Link> */}
                     </div>
                   </div>
                 </div>

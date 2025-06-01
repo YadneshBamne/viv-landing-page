@@ -685,7 +685,7 @@ const Career = () => {
             </Link>
           ))}
           <a
-            href="https://viv-test.vercel.app/"
+            href="https://docs.cosinv.com/"
             className="text-white transition duration-200 hover:text-amber-300"
           >
             DOCS
@@ -754,7 +754,7 @@ const Career = () => {
             </Link>
           ))}
           <a
-            href="https://viv-test.vercel.app/"
+            href="https://docs.cosinv.com/"
             className="text-white text-lg hover:text-gray-300"
           >
             DOCS
@@ -1069,7 +1069,7 @@ const News = () => {
             </Link>
           ))}
           <a
-            href="https://viv-test.vercel.app/"
+            href="https://docs.cosinv.com/"
             className="text-white transition duration-200 hover:text-amber-300"
           >
             DOCS
@@ -1138,7 +1138,7 @@ const News = () => {
             </Link>
           ))}
           <a
-            href="https://viv-test.vercel.app/"
+            href="https://docs.cosinv.com/"
             className="text-white text-lg hover:text-gray-300"
           >
             DOCS
@@ -1521,7 +1521,7 @@ const App = () => {
                         </Link>
                       ))}
                       <a
-                        href="https://viv-test.vercel.app/"
+                        href="https://docs.cosinv.com/"
                         className="text-white transition duration-200 hover:text-amber-300"
                       >
                         DOCS
@@ -1595,7 +1595,7 @@ const App = () => {
                         </Link>
                       ))}
                       <a
-                        href="https://viv-test.vercel.app/"
+                        href="https://docs.cosinv.com/"
                         className="text-white text-lg hover:text-amber-300"
                       >
                         DOCS
@@ -2300,7 +2300,7 @@ const App = () => {
                     </Link>
                   ))}
                   <a
-                    href="https://viv-test.vercel.app/"
+                    href="https://docs.cosinv.com/"
                     className="text-white transition duration-200 hover:text-amber-300"
                   >
                     DOCS
@@ -2372,7 +2372,7 @@ const App = () => {
                     </Link>
                   ))}
                   <a
-                    href="https://viv-test.vercel.app/"
+                    href="https://docs.cosinv.com/"
                     className="text-white text-lg hover:text-gray-300"
                   >
                     DOCS

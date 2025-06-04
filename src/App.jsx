@@ -35,6 +35,10 @@ import {
   Mic2,
   Mic,
   Atom,
+  MessageCircle,
+  PlusCircle,
+  Heart,
+  ChartNoAxesColumn,
 } from "lucide-react";
 import Lottie from "lottie-react";
 import Spline from "@splinetool/react-spline";
@@ -382,7 +386,7 @@ function AnimatedAIChat() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            Type a command or ask a question
+            Secure, fast, and reliable AI chat experience
           </motion.p>
         </div>
 
@@ -663,19 +667,23 @@ const Career = () => {
   ];
 
   return (
-    <div className="relative w-full overflow-x-hidden text-white bg-[#0A0A0C]">
+    <div className="relative w-full overflow-x-hidden text-white bg-[#07080A]">
       {/* Header */}
       <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-4">
           <Link to="/">
-            <img className="mr-4" src="./viv.png" width={85} alt="Logo" />
+            <img className="mr-6 mt-2" src="./v3.png" width={75} alt="Logo" />
           </Link>
         </div>
-
-        {/* Center Nav Links */}
         <div className="hidden md:flex space-x-8 tracking-wide items-center text-sm font-medium">
-          {["VIV", "NEWS", "CAREER"].map((item) => (
+          <a
+            href="/"
+            className="text-white transition duration-200 hover:text-amber-300"
+          >
+            VIV
+          </a>
+          {["NEWS", "CAREER"].map((item) => (
             <Link
               key={item}
               to={`/${item.toLowerCase()}`}
@@ -684,6 +692,7 @@ const Career = () => {
               {item}
             </Link>
           ))}
+
           <a
             href="https://docs.cosinv.com/"
             className="text-white transition duration-200 hover:text-amber-300"
@@ -744,27 +753,34 @@ const Career = () => {
         }`}
       >
         <div className="flex flex-col items-start p-6 space-y-4">
-          {["VIV", "NEWS", "CAREER"].map((item) => (
-            <Link
-              key={item}
-              to={`/${item.toLowerCase()}`}
-              className="text-white text-lg hover:text-gray-300"
-            >
-              {item}
-            </Link>
-          ))}
-          <a
-            href="https://docs.cosinv.com/"
-            className="text-white text-lg hover:text-gray-300"
-          >
-            DOCS
-          </a>
-          <a
-            href="https://chat.cosinv.com/dashboard"
-            className="text-white text-lg hover:text-gray-300"
-          >
-            API
-          </a>
+                                <a
+                        href="/"
+                        className="text-white transition duration-200 hover:text-amber-300"
+                      >
+                        VIV
+                      </a>
+                      {["NEWS", "CAREER"].map((item) => (
+                        <Link
+                          key={item}
+                          to={`/${item.toLowerCase()}`}
+                          className="text-white transition duration-200 hover:text-amber-300"
+                        >
+                          {item}
+                        </Link>
+                      ))}
+
+                      <a
+                        href="https://docs.cosinv.com/"
+                        className="text-white transition duration-200 hover:text-amber-300"
+                      >
+                        DOCS
+                      </a>
+                      <a
+                        href="https://chat.cosinv.com/dashboard"
+                        className="text-white transition duration-200 hover:text-amber-300"
+                      >
+                        API
+                      </a>
           <Link to="https://chat.cosinv.com/">
             <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
               Try ViV AI
@@ -1036,30 +1052,80 @@ const News = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const footerSections = [
-    { title: "TRY VIV ON", links: ["Web", "Android", "IOS"] },
-    { title: "PRODUCTS", links: ["API", "PlayGround"] },
-    { title: "COMPANY", links: ["Career", "News"] },
+  // Sample posts data to simulate X.com feed
+  const posts = [
     {
-      title: "RESOURCES",
-      links: ["Documentation", "Privacy Policy", "Legal", "Security", "Status"],
+      id: 1,
+      author: "Dr Jitendra Singh",
+      handle: "@DrJitendraSingh",
+      timestamp: "Jun 3",
+      content:
+        "It is a matter of pride for all Indians that Shubhanshu Shukla will be part of this international space mission. His role will be just as significant as anyone else involved. While Rakesh Sharma was the first Indian astronaut to go to space, it was a Soviet mission, with",
+      image: "/chat.png", // Placeholder image
+      comments: 10,
+      retweets: 103,
+      likes: 550,
+      views: "35K",
     },
+    {
+      id: 2,
+      author: "Space News",
+      handle: "@SpaceNews",
+      timestamp: "Jun 2",
+      content:
+        "Exciting updates on the latest space missions! Stay tuned for more details on international collaborations.",
+      image: "/chat.png",
+      comments: 5,
+      retweets: 50,
+      likes: 200,
+      views: "10K",
+    },
+    {
+      id: 3,
+      author: "ISRO Updates",
+      handle: "@ISROUpdates",
+      timestamp: "Jun 1",
+      content:
+        "India's space program reaches new heights with upcoming missions. More details to follow!",
+      image: "/chat.png",
+      comments: 15,
+      retweets: 120,
+      likes: 600,
+      views: "40K",
+    },
+    {
+      id: 4,
+      author: "ISRO Updates",
+      handle: "@ISROUpdates",
+      timestamp: "Jun 1",
+      content:
+        "India's space program reaches new heights with upcoming missions. More details to follow!",
+      image: "/chat.png",
+      comments: 15,
+      retweets: 120,
+      likes: 600,
+      views: "40K",
+    },
+
   ];
 
   return (
-    <div className="relative w-full overflow-x-hidden text-white bg-[#0A0A0C]">
+    <div className="relative w-full overflow-x-hidden text-white bg-[#07080A]">
       {/* Header */}
       <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
-        {/* Logo */}
         <div className="flex items-center space-x-4">
           <Link to="/">
-            <img className="mr-4" src="./viv.png" width={85} alt="Logo" />
+            <img className="mr-6 mt-2" src="./v3.png" width={75} alt="Logo" />
           </Link>
         </div>
-
-        {/* Center Nav Links */}
         <div className="hidden md:flex space-x-8 tracking-wide items-center text-sm font-medium">
-          {["VIV", "NEWS", "CAREER"].map((item) => (
+          <a
+            href="/"
+            className="text-white transition duration-200 hover:text-amber-300"
+          >
+            VIV
+          </a>
+          {["NEWS", "CAREER"].map((item) => (
             <Link
               key={item}
               to={`/${item.toLowerCase()}`}
@@ -1068,6 +1134,7 @@ const News = () => {
               {item}
             </Link>
           ))}
+
           <a
             href="https://docs.cosinv.com/"
             className="text-white transition duration-200 hover:text-amber-300"
@@ -1081,8 +1148,6 @@ const News = () => {
             API
           </a>
         </div>
-
-        {/* Try VIV AI Button */}
         <div className="hidden md:flex">
           <Link to="https://chat.cosinv.com/">
             <button className="text-white cursor-pointer px-4 py-2 rounded-full border border-white transition hover:bg-white hover:text-black font-semibold">
@@ -1090,8 +1155,6 @@ const News = () => {
             </button>
           </Link>
         </div>
-
-        {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center" onClick={toggleMenu}>
           {isMenuOpen ? (
             <svg
@@ -1123,12 +1186,15 @@ const News = () => {
         onClick={toggleMenu}
       ></div>
       <div
-        className={`fixed right-0 top-0 z-40 bg-[#040403] w-[250px] h-full transform transition-transform duration-300 ${
+        className={`fixed right-0 top-0 z-40 bg-[#07080A] w-[250px] h-full transform transition-transform duration-300 ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex flex-col items-start p-6 space-y-4">
-          {["VIV", "API", "NEWS", "CAREER"].map((item) => (
+          <a href="/" className="text-white text-lg hover:text-gray-300">
+            VIV
+          </a>
+          {["NEWS", "CAREER"].map((item) => (
             <Link
               key={item}
               to={`/${item.toLowerCase()}`}
@@ -1158,28 +1224,115 @@ const News = () => {
       </div>
 
       {/* Main Content */}
-      <section className="w-full min-h-[calc(100vh-80px)] flex flex-col justify-center items-center text-center px-4">
-        <h1 className="text-white text-5xl sm:text-8xl font-bold font-mono mb-10">
-          VIV IN THE NEWS
+      <section className="w-full min-h-[calc(100vh-80px)] px-4 py-16 bg-[#07080A]">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-7xl text-center font-medium tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-white/90 to-white/40 pb-10">
+          NEWS AT VIV
         </h1>
-        <p className="text-gray-400 text-lg sm:text-xl max-w-2xl mb-8">
-          Stay updated with the latest announcements, product launches, and
-          media coverage about ViV AI's innovative solutions.
-        </p>
-        <div className="relative w-full max-w-[580px] px-2">
-          <input
-            type="text"
-            placeholder="Search News Articles"
-            className="w-full px-6 py-3 pr-14 rounded-full text-white text-base sm:text-lg bg-neutral-950 border focus:outline-none focus:ring-2"
-          />
-          <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-black p-2 mr-1 rounded-full hover:bg-amber-50 transition">
-            <ArrowRight className="w-5 h-5 cursor-pointer" />
-          </button>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-white/10">
+          {posts.map((post, index) => {
+            const totalCols = 3;
+            const totalRows = Math.ceil(posts.length / totalCols);
+            const row = Math.floor(index / totalCols);
+            const col = index % totalCols;
+
+            const isFirstRow = row === 0;
+            const isLastRow = row === totalRows - 1;
+            const isFirstCol = col === 0;
+            const isLastCol = col === totalCols - 1;
+
+            return (
+              <div
+                key={post.id}
+                className={`relative p-6 bg-[#07080A] rounded-xl shadow-md hover:shadow-lg transition-all duration-300
+        ${isFirstRow ? "border-t border-gray-700" : ""}
+        ${isLastRow ? "border-b border-gray-700" : "border-b border-gray-700"}
+        ${isFirstCol ? "border-l border-gray-700" : ""}
+        ${isLastCol ? "border-r border-gray-700" : "border-r border-gray-700"}
+      `}
+              >
+                {/* Corner Dots */}
+                <div
+                  className="absolute w-1.5 h-1.5 bg-gray-400 rounded-sm"
+                  style={{ top: "-0.75px", left: "-0.75px" }}
+                ></div>
+                <div
+                  className="absolute w-1.5 h-1.5 bg-gray-400 rounded-sm"
+                  style={{ top: "-0.75px", right: "-0.75px" }}
+                ></div>
+                <div
+                  className="absolute w-1.5 h-1.5 bg-gray-400 rounded-sm"
+                  style={{ bottom: "-0.75px", left: "-0.75px" }}
+                ></div>
+                <div
+                  className="absolute w-1.5 h-1.5 bg-gray-400 rounded-sm"
+                  style={{ bottom: "-0.75px", right: "-0.75px" }}
+                ></div>
+
+                {/* Post Header */}
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-gray-600 to-gray-800 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    {post.author[0]}
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <p className="text-white font-semibold text-base">
+                        {post.author}
+                      </p>
+                      <p className="text-gray-400 text-xs">{post.timestamp}</p>
+                    </div>
+                    <p className="text-gray-400 text-sm">{post.handle}</p>
+                  </div>
+                </div>
+
+                {/* Post Content */}
+                <p className="text-white text-base leading-relaxed mb-4 line-clamp-3">
+                  {post.content}
+                </p>
+                <button className="text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors duration-200 mb-4">
+                  Show more
+                </button>
+
+                {/* Post Image */}
+                {post.image && (
+                  <img
+                    src={post.image}
+                    alt={`${post.author}'s post image`}
+                    className="w-full h-64 object-cover rounded-xl mb-4 transition-transform duration-300 hover:scale-[1.02]"
+                  />
+                )}
+
+                {/* Post Interactions */}
+                <div className="flex justify-between items-center text-gray-400 text-sm border-t border-gray-700 pt-3">
+                  <div className="flex space-x-6">
+                    <button className="flex items-center space-x-1 hover:text-blue-400 transition-colors duration-200">
+                      <MessageCircle className="w-5 h-5" />
+                      <span>{post.comments || 0}</span>
+                    </button>
+                    <button className="flex items-center space-x-1 hover:text-green-400 transition-colors duration-200">
+                      <PlusCircle className="w-5 h-5" />
+                      <span>{post.retweets || 0}</span>
+                    </button>
+                    <button className="flex items-center space-x-1 hover:text-red-400 transition-colors duration-200">
+                      <Heart className="w-5 h-5" />
+                      <span>{post.likes || 0}</span>
+                    </button>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <button className="hover:text-blue-400 transition-colors duration-200">
+                      <ChartNoAxesColumn className="w-5 h-5" />
+                    </button>
+                    <span>{post.views || 0}</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#0A0A0C] backdrop-blur-sm flex justify-center">
+      <footer className="bg-[#07080A] backdrop-blur-sm flex justify-center">
         <div className="container flex flex-col gap-8 px-4 py-10 md:px-6 lg:py-16">
           <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
             <div className="space-y-4">
@@ -1511,7 +1664,13 @@ const App = () => {
 
                     {/* Center Nav Links */}
                     <div className="hidden md:flex space-x-8 tracking-wide items-center text-sm font-medium">
-                      {["VIV", "NEWS", "CAREER"].map((item) => (
+                      <a
+                        href="/"
+                        className="text-white transition duration-200 hover:text-amber-300"
+                      >
+                        VIV
+                      </a>
+                      {["NEWS", "CAREER"].map((item) => (
                         <Link
                           key={item}
                           to={`/${item.toLowerCase()}`}
@@ -1520,6 +1679,7 @@ const App = () => {
                           {item}
                         </Link>
                       ))}
+
                       <a
                         href="https://docs.cosinv.com/"
                         className="text-white transition duration-200 hover:text-amber-300"
@@ -1585,24 +1745,31 @@ const App = () => {
                     }`}
                   >
                     <div className="flex flex-col items-start p-6 space-y-4">
-                      {["VIV", "NEWS", "CAREER"].map((item) => (
+                      <a
+                        href="/"
+                        className="text-white transition duration-200 hover:text-amber-300"
+                      >
+                        VIV
+                      </a>
+                      {["NEWS", "CAREER"].map((item) => (
                         <Link
                           key={item}
                           to={`/${item.toLowerCase()}`}
-                          className="text-white text-lg hover:text-amber-300"
+                          className="text-white transition duration-200 hover:text-amber-300"
                         >
                           {item}
                         </Link>
                       ))}
+
                       <a
                         href="https://docs.cosinv.com/"
-                        className="text-white text-lg hover:text-amber-300"
+                        className="text-white transition duration-200 hover:text-amber-300"
                       >
                         DOCS
                       </a>
                       <a
                         href="https://chat.cosinv.com/dashboard"
-                        className="text-white text-lg hover:text-amber-300"
+                        className="text-white transition duration-200 hover:text-amber-300"
                       >
                         API
                       </a>
@@ -2282,7 +2449,7 @@ const App = () => {
                     <img
                       className="mr-4"
                       src="./viv.png"
-                      width={85}
+                      width={75}
                       alt="Logo"
                     />
                   </Link>
@@ -2290,27 +2457,34 @@ const App = () => {
 
                 {/* Center Nav Links */}
                 <div className="hidden md:flex space-x-8 tracking-wide items-center text-sm font-medium">
-                  {["VIV", "NEWS", "CAREER"].map((item) => (
-                    <Link
-                      key={item}
-                      to={`/${item.toLowerCase()}`}
-                      className="text-white transition duration-200 hover:text-amber-300"
-                    >
-                      {item}
-                    </Link>
-                  ))}
-                  <a
-                    href="https://docs.cosinv.com/"
-                    className="text-white transition duration-200 hover:text-amber-300"
-                  >
-                    DOCS
-                  </a>
-                  <a
-                    href="https://chat.cosinv.com/dashboard"
-                    className="text-white transition duration-200 hover:text-amber-300"
-                  >
-                    API
-                  </a>
+                                        <a
+                        href="/"
+                        className="text-white transition duration-200 hover:text-amber-300"
+                      >
+                        VIV
+                      </a>
+                      {["NEWS", "CAREER"].map((item) => (
+                        <Link
+                          key={item}
+                          to={`/${item.toLowerCase()}`}
+                          className="text-white transition duration-200 hover:text-amber-300"
+                        >
+                          {item}
+                        </Link>
+                      ))}
+
+                      <a
+                        href="https://docs.cosinv.com/"
+                        className="text-white transition duration-200 hover:text-amber-300"
+                      >
+                        DOCS
+                      </a>
+                      <a
+                        href="https://chat.cosinv.com/dashboard"
+                        className="text-white transition duration-200 hover:text-amber-300"
+                      >
+                        API
+                      </a>
                 </div>
 
                 {/* Try VIV AI Button */}

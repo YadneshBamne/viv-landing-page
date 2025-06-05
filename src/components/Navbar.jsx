@@ -17,7 +17,7 @@ const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
         <div className="hidden md:flex space-x-8 tracking-wide items-center text-sm font-medium">
           <a
             href="/"
-            className="text-white transition duration-200 hover:text-amber-300"
+            className="text-white transition duration-200 hover:text-amber-100"
           >
             VIV
           </a>
@@ -25,7 +25,7 @@ const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
             <Link
               key={item}
               to={`/${item.toLowerCase()}`}
-              className="text-white transition duration-200 hover:text-amber-300"
+              className="text-white transition duration-200 hover:text-amber-100"
             >
               {item}
             </Link>
@@ -33,13 +33,13 @@ const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
           <a
             href="https://docs.cosinv.com/"
-            className="text-white transition duration-200 hover:text-amber-300"
+            className="text-white transition duration-200 hover:text-amber-100"
           >
             DOCS
           </a>
           <a
-            href="https://chat.cosinv.com/dashboard"
-            className="text-white transition duration-200 hover:text-amber-300"
+            href="/api"
+            className="text-white transition duration-200 hover:text-amber-100"
           >
             API
           </a>
@@ -106,7 +106,7 @@ const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
             DOCS
           </a>
           <a
-            href="https://chat.cosinv.com/dashboard"
+            href="/api"
             className="text-white text-lg hover:text-gray-300"
           >
             API

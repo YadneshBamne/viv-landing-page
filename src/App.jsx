@@ -78,6 +78,7 @@ import {
 } from "@/components/ui/table";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import OpenAIAPIPage from "./components/openai";
 
 // Placeholder Button Component
 const Button = ({ size, className, children, ...props }) => {
@@ -1650,6 +1651,7 @@ const App = () => {
         <Route path="/terms" element={<TermsPolicy />} />
         <Route path="/help-faq" element={<HelpFAQ />} />
         <Route path="/release-notes" element={<ReleaseNotes />} />
+        <Route path="/api" element={<OpenAIAPIPage />} />
         <Route
           path="*"
           element={

@@ -6,6 +6,7 @@ import React, {
   useTransition,
 } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Dropdown from "./components/Dropdown";
 import {
   ArrowRight,
   MenuIcon,
@@ -60,6 +61,23 @@ import { cn } from "@/lib/utils";
 import TermsPolicy from "./TP";
 import HelpFAQ from "./Help";
 import ReleaseNotes from "./RN";
+import {
+  Combobox,
+  ComboboxButton,
+  ComboboxInput,
+  ComboboxOption,
+  ComboboxOptions,
+} from "@headlessui/react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 // Placeholder Button Component
 const Button = ({ size, className, children, ...props }) => {
@@ -628,15 +646,139 @@ const Career = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const footerSections = [
-    { title: "TRY VIV ON", links: ["Web", "Android", "IOS"] },
-    { title: "PRODUCTS", links: ["API", "PlayGround"] },
-    { title: "COMPANY", links: ["Career", "News"] },
+  // Data for the job listings
+  const jobs = [
     {
-      title: "RESOURCES",
-      links: ["Documentation", "Privacy Policy", "Legal", "Security", "Status"],
+      title: "Account Director, Digital Native",
+      department: "Go To Market",
+      location: "Singapore",
+    },
+    {
+      title: "Account Director, Digital Native",
+      department: "Sales",
+      location: "San Francisco",
+    },
+    {
+      title: "Account Director, Digital Natives",
+      department: "Go To Market",
+      location: "Seoul, South Korea",
+    },
+    {
+      title: "Account Director, EDU",
+      department: "Go To Market",
+      location: "Singapore",
+    },
+    {
+      title: "Account Director, Federal Civilian",
+      department: "Go To Market",
+      location: "Washington, DC",
+    },
+    {
+      title: "Software Engineer, AI Development",
+      department: "Engineering",
+      location: "San Francisco",
+    },
+    {
+      title: "Data Scientist, Machine Learning",
+      department: "Engineering",
+      location: "New York",
+    },
+    {
+      title: "Product Manager, AI Solutions",
+      department: "Go To Market",
+      location: "London, UK",
+    },
+    {
+      title: "Sales Representative, Enterprise",
+      department: "Sales",
+      location: "Chicago",
+    },
+    {
+      title: "AI Research Scientist",
+      department: "Engineering",
+      location: "Toronto, Canada",
+    },
+    {
+      title: "Marketing Specialist, Digital Campaigns",
+      department: "Go To Market",
+      location: "Singapore",
+    },
+    {
+      title: "Technical Support Engineer",
+      department: "Engineering",
+      location: "Austin",
+    },
+    {
+      title: "Account Manager, SMB",
+      department: "Sales",
+      location: "San Francisco",
+    },
+    {
+      title: "Senior Software Engineer, Backend",
+      department: "Engineering",
+      location: "Seattle",
+    },
+    {
+      title: "Business Development Manager",
+      department: "Go To Market",
+      location: "Tokyo, Japan",
+    },
+    {
+      title: "UX Designer, AI Interfaces",
+      department: "Engineering",
+      location: "Remote",
+    },
+    {
+      title: "Sales Director, APAC Region",
+      department: "Sales",
+      location: "Singapore",
+    },
+    {
+      title: "Machine Learning Engineer",
+      department: "Engineering",
+      location: "Bangalore, India",
+    },
+    {
+      title: "Customer Success Manager",
+      department: "Go To Market",
+      location: "New York",
+    },
+    {
+      title: "DevOps Engineer",
+      department: "Engineering",
+      location: "Remote",
     },
   ];
+
+  // Data for dropdowns
+  const teams = ["All teams", "Sales", "Go To Market", "Engineering"];
+  const locations = [
+    "All locations",
+    "Singapore",
+    "San Francisco",
+    "Seoul, South Korea",
+    "Washington, DC",
+  ];
+
+  const [selectedTeam, setSelectedTeam] = useState(teams[0]);
+  const [selectedLocation, setSelectedLocation] = useState(locations[0]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Filter jobs based on selections
+  const filteredJobs = jobs.filter((job) => {
+    const matchesTeam =
+      selectedTeam.toLowerCase() === "all teams" ||
+      job.department === selectedTeam;
+    const matchesLocation =
+      selectedLocation.toLowerCase() === "all locations" ||
+      job.location === selectedLocation;
+    const matchesSearch = job.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    return matchesTeam && matchesLocation && matchesSearch;
+  });
+
+  // Debugging: Log state and filtered jobs
 
   const benefits = [
     {
@@ -667,382 +809,126 @@ const Career = () => {
   ];
 
   return (
-    <div className="relative w-full overflow-x-hidden text-white bg-[#07080A]">
+    <div className="relative w-full min-h-screen bg-[#07080A] text-white">
       {/* Header */}
-      <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center space-x-4">
-          <Link to="/">
-            <img className="mr-6 mt-2" src="./v3.png" width={75} alt="Logo" />
-          </Link>
-        </div>
-        <div className="hidden md:flex space-x-8 tracking-wide items-center text-sm font-medium">
-          <a
-            href="/"
-            className="text-white transition duration-200 hover:text-amber-300"
-          >
-            VIV
-          </a>
-          {["NEWS", "CAREER"].map((item) => (
-            <Link
-              key={item}
-              to={`/${item.toLowerCase()}`}
-              className="text-white transition duration-200 hover:text-amber-300"
-            >
-              {item}
-            </Link>
-          ))}
-
-          <a
-            href="https://docs.cosinv.com/"
-            className="text-white transition duration-200 hover:text-amber-300"
-          >
-            DOCS
-          </a>
-          <a
-            href="https://chat.cosinv.com/dashboard"
-            className="text-white transition duration-200 hover:text-amber-300"
-          >
-            API
-          </a>
-        </div>
-
-        {/* Try VIV AI Button */}
-        <div className="hidden md:flex">
-          <Link to="https://chat.cosinv.com/">
-            <button className="text-white cursor-pointer px-4 py-2 rounded-full border border-white transition hover:bg-white hover:text-black font-semibold">
-              Try VIV AI
-            </button>
-          </Link>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center" onClick={toggleMenu}>
-          {isMenuOpen ? (
-            <svg
-              width="24"
-              height="24"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              className="text-white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <MenuIcon size={29} className="text-white" />
-          )}
-        </div>
-      </nav>
-
-      {/* Mobile Sidebar */}
-      <div
-        className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-        onClick={toggleMenu}
-      ></div>
-      <div
-        className={`fixed right-0 top-0 z-40 bg-[#040403] w-[250px] h-full transform transition-transform duration-300 ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col items-start p-6 space-y-4">
-                                <a
-                        href="/"
-                        className="text-white transition duration-200 hover:text-amber-300"
-                      >
-                        VIV
-                      </a>
-                      {["NEWS", "CAREER"].map((item) => (
-                        <Link
-                          key={item}
-                          to={`/${item.toLowerCase()}`}
-                          className="text-white transition duration-200 hover:text-amber-300"
-                        >
-                          {item}
-                        </Link>
-                      ))}
-
-                      <a
-                        href="https://docs.cosinv.com/"
-                        className="text-white transition duration-200 hover:text-amber-300"
-                      >
-                        DOCS
-                      </a>
-                      <a
-                        href="https://chat.cosinv.com/dashboard"
-                        className="text-white transition duration-200 hover:text-amber-300"
-                      >
-                        API
-                      </a>
-          <Link to="https://chat.cosinv.com/">
-            <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
-              Try ViV AI
-            </button>
-          </Link>
-        </div>
-      </div>
+<Navbar/>
 
       {/* Main Content */}
-      <section className="w-full min-h-[calc(100vh-80px)] flex flex-col justify-center items-center text-center px-4 py-12">
-        <h1 className="text-white text-4xl sm:text-6xl md:text-7xl font-bold font-mono mb-6">
-          Join ViV AI's Mission
+      <section className="w-full min-h-[calc(100vh-80px)] flex flex-col items-center px-4 py-12 bg-[#07080A] ">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-7xl text-center font-medium tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-white/90 to-white/40 pb-10">
+          Careers at VIV
         </h1>
-        <p className="text-gray-300 text-lg sm:text-xl max-w-3xl mb-8">
+        <p className="text-gray-300 text-lg sm:text-xl max-w-3xl text-center mb-12">
           We are a team of innovators building AI to accelerate human
           understanding of the universe. Join us to shape the future of AI with
           ambitious goals and a passion for excellence.
         </p>
-        <button className="text-white px-6 py-3 rounded-full border hover:bg-amber-50 hover:text-black font-extrabold text-lg mb-12">
-          Explore Open Roles
-        </button>
 
-        {/* Benefits Section */}
-        <div className="max-w-6xl w-full">
-          <h2 className="text-white text-3xl sm:text-4xl font-bold font-mono mb-8">
-            Why Work at ViV AI?
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {benefits.map((benefit) => (
-              <div
-                key={benefit.title}
-                className="p-6 bg-neutral-900 rounded-lg text-left"
+        {/* Job Filters */}
+        <div className="w-full max-w-5xl mx-auto mb-12">
+          <div className="flex flex-col sm:flex-row gap-7 lg:gap-20 mb-8 items-center justify-center">
+            {/* Search Box */}
+            <div className="relative w-full max-w-md">
+              <input
+                type="text"
+                placeholder="Search jobs..."
+                className="w-full p-3 rounded-lg text-white border border-[#4A4A48] focus:ring-2"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <svg
+                className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                <h3 className="text-white text-xl font-bold mb-2">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-400 text-base">{benefit.description}</p>
-              </div>
-            ))}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+            <span className="text-gray-400 text-sm">
+              {filteredJobs.length} jobs
+            </span>
+
+            {/* Temporary Dropdown Replacement */}
+            <div className="flex gap-4">
+              <select
+                value={selectedTeam}
+                onChange={(e) => setSelectedTeam(e.target.value)}
+                className="p-3 text-white bg-[#07080A] border-b border-[#4A4A48] focus-none"
+              >
+                {teams.map((team) => (
+                  <option key={team} value={team}>
+                    {team}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={selectedLocation}
+                onChange={(e) => setSelectedLocation(e.target.value)}
+                className="p-3 text-white bg-[#07080A] border-b border-[#4A4A48]"
+              >
+                {locations.map((location) => (
+                  <option key={location} value={location}>
+                    {location}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Job Listings */}
+          <div className="w-full max-w-6xl mx-auto">
+            <div className="overflow-x-auto divide-y divide-neutral-700">
+              {filteredJobs.length > 0 ? (
+                filteredJobs.map((job, index) => (
+                  <div
+                    key={index}
+                    className="py-6 px-4 md:px-6 flex flex-col md:flex-row md:items-center justify-between transition duration-200"
+                  >
+                    <div>
+                      <h3 className="text-white font-semibold text-base md:text-lg">
+                        {job.title}
+                      </h3>
+                      <p className="text-gray-300">{job.department}</p>
+                      <p className="text-gray-500">{job.location}</p>
+                    </div>
+                    <div className="mt-4 md:mt-0">
+                      <button className="text-white hover:text-amber-100 cursor-pointer flex items-center gap-1">
+                        Apply now
+                        <svg
+                          className="h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-gray-400 text-center py-6">
+                  No jobs match your filters.
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#0A0A0C] backdrop-blur-sm flex justify-center">
-        <div className="container flex flex-col gap-8 px-4 py-10 md:px-6 lg:py-16">
-          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2 font-bold">
-                <div className="size-10 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center text-white">
-                  VIV
-                </div>
-                <span className="text-white">COSINV AI</span>
-              </div>
-              <p className="text-sm text-gray-400">
-                Streamline your workflow with our all-in-one SaaS platform.
-                Boost productivity and scale your business.
-              </p>
-              <div className="flex gap-4">
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="size-5"
-                  >
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                  </svg>
-                  <span className="sr-only">Facebook</span>
-                </Link>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="size-5"
-                  >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                  </svg>
-                  <span className="sr-only">Twitter</span>
-                </Link>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="size-5"
-                  >
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect width="4" height="12" x="2" y="9"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                  </svg>
-                  <span className="sr-only">LinkedIn</span>
-                </Link>
-              </div>
-            </div>
-            <div className="space-y-4">
-              <h4 className="text-sm font-bold text-white">Product</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link
-                    href="#features"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Features
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#pricing"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Integrations
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    API
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h4 className="text-sm font-bold text-white">Resources</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Documentation
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Guides
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Support
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h4 className="text-sm font-bold text-white">Company</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Terms of Service
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="flex flex-col gap-4 sm:flex-row justify-between items-center pt-8">
-            <p className="text-xs text-gray-400">
-              © {new Date().getFullYear()} COSINV. All rights reserved.
-            </p>
-            <div className="flex gap-4">
-              <Link
-                href="/release-notes"
-                className="text-xs text-gray-400 hover:text-white transition-colors"
-              >
-                Release Notes
-              </Link>
-              <Link
-                href="#"
-                className="text-xs text-gray-400 hover:text-white transition-colors"
-              >
-                Terms and policy
-              </Link>
-              <Link
-                href="#"
-                className="text-xs text-gray-400 hover:text-white transition-colors"
-              >
-                Help & FAQ
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 };
@@ -1106,128 +992,21 @@ const News = () => {
       likes: 600,
       views: "40K",
     },
-
   ];
 
   return (
     <div className="relative w-full overflow-x-hidden text-white bg-[#07080A]">
       {/* Header */}
-      <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
-        <div className="flex items-center space-x-4">
-          <Link to="/">
-            <img className="mr-6 mt-2" src="./v3.png" width={75} alt="Logo" />
-          </Link>
-        </div>
-        <div className="hidden md:flex space-x-8 tracking-wide items-center text-sm font-medium">
-          <a
-            href="/"
-            className="text-white transition duration-200 hover:text-amber-300"
-          >
-            VIV
-          </a>
-          {["NEWS", "CAREER"].map((item) => (
-            <Link
-              key={item}
-              to={`/${item.toLowerCase()}`}
-              className="text-white transition duration-200 hover:text-amber-300"
-            >
-              {item}
-            </Link>
-          ))}
-
-          <a
-            href="https://docs.cosinv.com/"
-            className="text-white transition duration-200 hover:text-amber-300"
-          >
-            DOCS
-          </a>
-          <a
-            href="https://chat.cosinv.com/dashboard"
-            className="text-white transition duration-200 hover:text-amber-300"
-          >
-            API
-          </a>
-        </div>
-        <div className="hidden md:flex">
-          <Link to="https://chat.cosinv.com/">
-            <button className="text-white cursor-pointer px-4 py-2 rounded-full border border-white transition hover:bg-white hover:text-black font-semibold">
-              Try VIV AI
-            </button>
-          </Link>
-        </div>
-        <div className="md:hidden flex items-center" onClick={toggleMenu}>
-          {isMenuOpen ? (
-            <svg
-              width="24"
-              height="24"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              className="text-white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <MenuIcon size={29} className="text-white" />
-          )}
-        </div>
-      </nav>
-
-      {/* Mobile Sidebar */}
-      <div
-        className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-        onClick={toggleMenu}
-      ></div>
-      <div
-        className={`fixed right-0 top-0 z-40 bg-[#07080A] w-[250px] h-full transform transition-transform duration-300 ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col items-start p-6 space-y-4">
-          <a href="/" className="text-white text-lg hover:text-gray-300">
-            VIV
-          </a>
-          {["NEWS", "CAREER"].map((item) => (
-            <Link
-              key={item}
-              to={`/${item.toLowerCase()}`}
-              className="text-white text-lg hover:text-gray-300"
-            >
-              {item}
-            </Link>
-          ))}
-          <a
-            href="https://docs.cosinv.com/"
-            className="text-white text-lg hover:text-gray-300"
-          >
-            DOCS
-          </a>
-          <a
-            href="https://chat.cosinv.com/dashboard"
-            className="text-white text-lg hover:text-gray-300"
-          >
-            API
-          </a>
-          <Link to="https://chat.cosinv.com/">
-            <button className="text-white px-4 py-2 rounded-full border hover:bg-amber-50 cursor-pointer hover:text-black font-extrabold">
-              Try ViV AI
-            </button>
-          </Link>
-        </div>
-      </div>
+<Navbar/>
 
       {/* Main Content */}
-      <section className="w-full min-h-[calc(100vh-80px)] px-4 py-16 bg-[#07080A]">
-        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-7xl text-center font-medium tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-white/90 to-white/40 pb-10">
-          NEWS AT VIV
-        </h1>
+<section className="w-full min-h-[calc(100vh-80px)] px-4 py-16 bg-[#07080A]">
+  <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-7xl text-center font-medium tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-white/90 to-white/40 pb-6">
+    News at VIV
+  </h1>
+  <p className="max-w-2xl pb-20 mx-auto text-center text-white text-lg sm:text-lg md:text-xl leading-relaxed">
+    Stay informed with the latest updates, breakthroughs, and insights from ViV AI. Explore our journey in advancing AI to accelerate human discovery and innovation.
+  </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-white/10">
           {posts.map((post, index) => {
@@ -1332,224 +1111,7 @@ const News = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#07080A] backdrop-blur-sm flex justify-center">
-        <div className="container flex flex-col gap-8 px-4 py-10 md:px-6 lg:py-16">
-          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2 font-bold">
-                <div className="size-10 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center text-white">
-                  VIV
-                </div>
-                <span className="text-white">COSINV AI</span>
-              </div>
-              <p className="text-sm text-gray-400">
-                Streamline your workflow with our all-in-one SaaS platform.
-                Boost productivity and scale your business.
-              </p>
-              <div className="flex gap-4">
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="size-5"
-                  >
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                  </svg>
-                  <span className="sr-only">Facebook</span>
-                </Link>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="size-5"
-                  >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                  </svg>
-                  <span className="sr-only">Twitter</span>
-                </Link>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="size-5"
-                  >
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect width="4" height="12" x="2" y="9"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                  </svg>
-                  <span className="sr-only">LinkedIn</span>
-                </Link>
-              </div>
-            </div>
-            <div className="space-y-4">
-              <h4 className="text-sm font-bold text-white">Product</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link
-                    href="#features"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Features
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#pricing"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Integrations
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    API
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h4 className="text-sm font-bold text-white">Resources</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Documentation
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Guides
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Support
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h4 className="text-sm font-bold text-white">Company</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    Terms of Service
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="flex flex-col gap-4 sm:flex-row justify-between items-center pt-8">
-            <p className="text-xs text-gray-400">
-              © {new Date().getFullYear()} COSINV. All rights reserved.
-            </p>
-            <div className="flex gap-4">
-              <Link
-                href="#"
-                className="text-xs text-gray-400 hover:text-white transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="#"
-                className="text-xs text-gray-400 hover:text-white transition-colors"
-              >
-                Terms of Service
-              </Link>
-              <Link
-                href="#"
-                className="text-xs text-gray-400 hover:text-white transition-colors"
-              >
-                Cookie Policy
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 };
@@ -1649,137 +1211,7 @@ const App = () => {
                 {/* Navbar and Chat UI */}
                 <div className="relative z-40 flex flex-col h-full">
                   {/* Navbar */}
-                  <nav className="w-full px-4 py-5 md:px-8 flex items-center justify-between">
-                    {/* Logo */}
-                    <div className="flex items-center space-x-4">
-                      <Link to="/">
-                        <img
-                          className="mr-6 mt-2"
-                          src="./v3.png"
-                          width={75}
-                          alt="Logo"
-                        />
-                      </Link>
-                    </div>
-
-                    {/* Center Nav Links */}
-                    <div className="hidden md:flex space-x-8 tracking-wide items-center text-sm font-medium">
-                      <a
-                        href="/"
-                        className="text-white transition duration-200 hover:text-amber-300"
-                      >
-                        VIV
-                      </a>
-                      {["NEWS", "CAREER"].map((item) => (
-                        <Link
-                          key={item}
-                          to={`/${item.toLowerCase()}`}
-                          className="text-white transition duration-200 hover:text-amber-300"
-                        >
-                          {item}
-                        </Link>
-                      ))}
-
-                      <a
-                        href="https://docs.cosinv.com/"
-                        className="text-white transition duration-200 hover:text-amber-300"
-                      >
-                        DOCS
-                      </a>
-                      <a
-                        href="https://chat.cosinv.com/dashboard"
-                        className="text-white transition duration-200 hover:text-amber-300"
-                      >
-                        API
-                      </a>
-                    </div>
-
-                    {/* Try VIV AI Button */}
-                    <div className="hidden md:flex">
-                      <Link to="https://chat.cosinv.com/">
-                        <button className="text-white cursor-pointer px-4 py-2 rounded-full border border-white transition hover:bg-white hover:text-black font-semibold">
-                          Try VIV AI
-                        </button>
-                      </Link>
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <div
-                      className="md:hidden flex items-center"
-                      onClick={toggleMenu}
-                    >
-                      {isMenuOpen ? (
-                        <svg
-                          width="24"
-                          height="24"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          className="text-white"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
-                      ) : (
-                        <MenuIcon size={29} className="text-white" />
-                      )}
-                    </div>
-                  </nav>
-
-                  {/* Mobile Sidebar Overlay */}
-                  <div
-                    className={`fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden transition-all ${
-                      isMenuOpen ? "translate-x-0" : "translate-x-full"
-                    }`}
-                    onClick={toggleMenu}
-                  ></div>
-
-                  {/* Mobile Sidebar */}
-                  <div
-                    className={`fixed right-0 top-0 z-40 bg-[#07080A] w-[250px] h-full transform transition-transform duration-300 ${
-                      isMenuOpen ? "translate-x-0" : "translate-x-full"
-                    }`}
-                  >
-                    <div className="flex flex-col items-start p-6 space-y-4">
-                      <a
-                        href="/"
-                        className="text-white transition duration-200 hover:text-amber-300"
-                      >
-                        VIV
-                      </a>
-                      {["NEWS", "CAREER"].map((item) => (
-                        <Link
-                          key={item}
-                          to={`/${item.toLowerCase()}`}
-                          className="text-white transition duration-200 hover:text-amber-300"
-                        >
-                          {item}
-                        </Link>
-                      ))}
-
-                      <a
-                        href="https://docs.cosinv.com/"
-                        className="text-white transition duration-200 hover:text-amber-300"
-                      >
-                        DOCS
-                      </a>
-                      <a
-                        href="https://chat.cosinv.com/dashboard"
-                        className="text-white transition duration-200 hover:text-amber-300"
-                      >
-                        API
-                      </a>
-                      <Link to="https://chat.cosinv.com/">
-                        <button className="text-white px-4 py-2 rounded-full border transition hover:bg-white hover:text-black font-semibold cursor-pointer">
-                          Try VIV AI
-                        </button>
-                      </Link>
-                    </div>
-                  </div>
+                  <Navbar/>
 
                   {/* Chat UI */}
                   <div className="absolute bottom-30 p-4 w-full flex justify-center z-30">
@@ -2209,226 +1641,7 @@ const App = () => {
               </section>
 
               {/* Footer */}
-              <footer className="bg-[#07080A] backdrop-blur-sm flex justify-center">
-                <div className="container flex flex-col gap-8 px-4 py-10 md:px-6 lg:py-16">
-                  <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-2 font-bold">
-                        <div className="size-10 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center text-white">
-                          VIV
-                        </div>
-                        <span className="text-white">COSINV AI</span>
-                      </div>
-                      <p className="text-sm text-gray-400">
-                        Streamline your workflow with our all-in-one SaaS
-                        platform. Boost productivity and scale your business.
-                      </p>
-                      <div className="flex gap-4">
-                        <Link
-                          href="#"
-                          className="text-gray-400 hover:text-white transition-colors"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="size-5"
-                          >
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                          </svg>
-                          <span className="sr-only">Facebook</span>
-                        </Link>
-                        <Link
-                          href="#"
-                          className="text-gray-400 hover:text-white transition-colors"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="size-5"
-                          >
-                            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                          </svg>
-                          <span className="sr-only">Twitter</span>
-                        </Link>
-                        <Link
-                          href="#"
-                          className="text-gray-400 hover:text-white transition-colors"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="size-5"
-                          >
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                            <rect width="4" height="12" x="2" y="9"></rect>
-                            <circle cx="4" cy="4" r="2"></circle>
-                          </svg>
-                          <span className="sr-only">LinkedIn</span>
-                        </Link>
-                      </div>
-                    </div>
-                    <div className="space-y-4">
-                      <h4 className="text-sm font-bold text-white">Product</h4>
-                      <ul className="space-y-2 text-sm">
-                        <li>
-                          <Link
-                            href="#features"
-                            className="text-gray-400 hover:text-white transition-colors"
-                          >
-                            Features
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="#pricing"
-                            className="text-gray-400 hover:text-white transition-colors"
-                          >
-                            Pricing
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="#"
-                            className="text-gray-400 hover:text-white transition-colors"
-                          >
-                            Integrations
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="#"
-                            className="text-gray-400 hover:text-white transition-colors"
-                          >
-                            API
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="space-y-4">
-                      <h4 className="text-sm font-bold text-white">
-                        Resources
-                      </h4>
-                      <ul className="space-y-2 text-sm">
-                        <li>
-                          <Link
-                            href="#"
-                            className="text-gray-400 hover:text-white transition-colors"
-                          >
-                            Documentation
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="#"
-                            className="text-gray-400 hover:text-white transition-colors"
-                          >
-                            Guides
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="#"
-                            className="text-gray-400 hover:text-white transition-colors"
-                          >
-                            Blog
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="#"
-                            className="text-gray-400 hover:text-white transition-colors"
-                          >
-                            Support
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="space-y-4">
-                      <h4 className="text-sm font-bold text-white">Company</h4>
-                      <ul className="space-y-2 text-sm">
-                        <li>
-                          <Link
-                            href="#"
-                            className="text-gray-400 hover:text-white transition-colors"
-                          >
-                            About
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/release-notes"
-                            className="text-gray-400 hover:text-white transition-colors"
-                          >
-                            Release Notes
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/terms"
-                            className="text-gray-400 hover:text-white transition-colors"
-                          >
-                            Terms and policy
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/help-faq"
-                            className="text-gray-400 hover:text-white transition-colors"
-                          >
-                            Help & FAQ
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-4 sm:flex-row justify-center items-center pt-8">
-                    <p className="text-xs text-gray-400">
-                      © {new Date().getFullYear()} COSINV. All rights reserved.
-                    </p>
-                    <div className="flex gap-4">
-                      {/* <Link
-                to="/release-notes"
-                className="text-xs text-gray-400 hover:text-white transition-colors"
-              >
-                Release Notes
-              </Link>
-              <Link
-                to="/terms"
-                className="text-xs text-gray-400 hover:text-white transition-colors"
-              >
-                Terms and policy
-              </Link>
-              <Link
-                to="/help-faq"
-                className="text-xs text-gray-400 hover:text-white transition-colors"
-              >
-                Help & FAQ
-              </Link> */}
-                    </div>
-                  </div>
-                </div>
-              </footer>
+              <Footer/>
             </div>
           }
         />
@@ -2457,34 +1670,34 @@ const App = () => {
 
                 {/* Center Nav Links */}
                 <div className="hidden md:flex space-x-8 tracking-wide items-center text-sm font-medium">
-                                        <a
-                        href="/"
-                        className="text-white transition duration-200 hover:text-amber-300"
-                      >
-                        VIV
-                      </a>
-                      {["NEWS", "CAREER"].map((item) => (
-                        <Link
-                          key={item}
-                          to={`/${item.toLowerCase()}`}
-                          className="text-white transition duration-200 hover:text-amber-300"
-                        >
-                          {item}
-                        </Link>
-                      ))}
+                  <a
+                    href="/"
+                    className="text-white transition duration-200 hover:text-amber-300"
+                  >
+                    VIV
+                  </a>
+                  {["NEWS", "CAREER"].map((item) => (
+                    <Link
+                      key={item}
+                      to={`/${item.toLowerCase()}`}
+                      className="text-white transition duration-200 hover:text-amber-300"
+                    >
+                      {item}
+                    </Link>
+                  ))}
 
-                      <a
-                        href="https://docs.cosinv.com/"
-                        className="text-white transition duration-200 hover:text-amber-300"
-                      >
-                        DOCS
-                      </a>
-                      <a
-                        href="https://chat.cosinv.com/dashboard"
-                        className="text-white transition duration-200 hover:text-amber-300"
-                      >
-                        API
-                      </a>
+                  <a
+                    href="https://docs.cosinv.com/"
+                    className="text-white transition duration-200 hover:text-amber-300"
+                  >
+                    DOCS
+                  </a>
+                  <a
+                    href="https://chat.cosinv.com/dashboard"
+                    className="text-white transition duration-200 hover:text-amber-300"
+                  >
+                    API
+                  </a>
                 </div>
 
                 {/* Try VIV AI Button */}

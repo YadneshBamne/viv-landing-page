@@ -511,7 +511,7 @@ function AnimatedAIChat() {
 
           <div className="p-4 border-t border-white/[0.05] flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <motion.button
+              {/* <motion.button
                 type="button"
                 onClick={handleAttachFile}
                 whileTap={{ scale: 0.94 }}
@@ -541,7 +541,7 @@ function AnimatedAIChat() {
                   className="absolute inset-0 bg-white/[0.05] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
                   layoutId="button-highlight"
                 />
-              </motion.button>
+              </motion.button> */}
             </div>
 
             <Link to="https://chat.cosinv.com/">
